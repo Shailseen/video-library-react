@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
+* {
+  margin: 0rem;
+  padding: 0rem;
+}
+.navbarContainer {
+  position: sticky;
+  box-shadow: -5px 15px 15px -12px #00c2cb;
+  top: 0;
+  padding: 1rem 0rem;
+  z-index: 10;
+  background-color: var(--white-color);
+}
+.mg_lt {
+  margin-left: 2rem;
+  width: fit-content;
+}
+.flex {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+body {
+  font-family: "Asap", sans-serif;
+}
+.brand_logo {
+  cursor: pointer;
+  width: 2rem;
+}
+.brand_text {
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: 900;
+  color: transparent;
+  background-image: linear-gradient(to right, #66abe7, #00c2cb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 200%;
+  background-position: -200%;
+  animation: animated-gradient 2s infinite alternate-reverse;
+}
+@keyframes animated-gradient {
+  to {
+    background-position: 200%;
+  }
+}
+.hamburger_icon {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+.hamburger_icon:hover {
+  background-color: #00000012;
+}
+@media only screen and (max-width: 700px) {
+  .hamburger_icon {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+.aside_container {
+  position: fixed;
+  width: 0rem;
+  height: 100vh;
+  background-color: var(--white-color);
+  overflow-x: hidden;
+  transition: width 0.3s;
+}
+.open_aside {
+  width: 13rem;
+}
+.aside_list_container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-left: 2rem;
+  gap: 0.7rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.aside_list_container span {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.aside_list_container:hover {
+  background-color: #00000012;
+}
+@media only screen and (max-width: 700px) {
+  .aside_container {
+    display: none;
+  }
+}
