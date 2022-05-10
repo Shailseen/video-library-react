@@ -1,0 +1,1 @@
+export const VIDEOS_API = "/api/videos";

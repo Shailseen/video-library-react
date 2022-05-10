@@ -4,12 +4,10 @@
   padding: 0rem;
 }
 .navbarContainer {
-  position: sticky;
-  box-shadow: -5px 15px 15px -12px #00c2cb;
-  top: 0;
+  width: 100%;
   padding: 1rem 0rem;
-  z-index: 10;
   background-color: var(--white-color);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .mg_lt {
   margin-left: 2rem;
@@ -19,9 +17,6 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}
-body {
-  font-family: "Asap", sans-serif;
 }
 .brand_logo {
   cursor: pointer;

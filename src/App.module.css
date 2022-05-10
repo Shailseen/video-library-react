@@ -1,0 +1,34 @@
+:root{
+    --primary-color: #00c2cb;
+}
+.app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "navbar navbar"
+    "aside main"
+    "mobile mobile";
+}
+.navbar {
+  grid-area: navbar;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.aside {
+  grid-area: aside;
+  position: sticky;
+  height: calc(100vh - 5.1rem);
+  top: 5.1rem;
+  background-color: var(--white-color);
+}
+.main {
+  grid-area: main;
+  padding: 1rem;
+}
+.mobile {
+  grid-area: mobile;
+  position: sticky;
+  bottom: 0;
+}
