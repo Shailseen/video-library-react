@@ -16,6 +16,7 @@ import History from "./routes/History/History";
 import { VideoPlayer } from "./routes/VideoPlayer/VideoPlayer";
 import { Tooltip } from "@mui/material";
 import { ToolTipsProvider } from "./context/toolTip-context";
+import { LoginPage } from "./routes/LoginPage/LoginPage";
 
 // Call make Server
 makeServer();
@@ -34,6 +35,7 @@ ReactDOM.render(
                 <Route path="/watchLater" element={<WatchLater />} />
                 <Route path="/history" element={<History />} />
                 <Route path="/watch/:videoId" element={<VideoPlayer />} />
+                <Route path="login" element={<LoginPage/>}/>
               </Route>
             </Routes>
           </ToolTipsProvider>
