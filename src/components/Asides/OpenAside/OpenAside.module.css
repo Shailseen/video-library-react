@@ -1,12 +1,11 @@
 .aside_container {
-  position: fixed;
   width: 0rem;
-  height: 100vh;
   background-color: var(--white-color);
-  overflow-x: hidden;
   transition: width 0.3s;
+  display: none;
 }
 .open_aside {
+  display: block;
   width: 13rem;
 }
 .aside_list_container {
