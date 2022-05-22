@@ -27,6 +27,7 @@ export const Navbar = () => {
           <span className={classNames(styles.brand_text)}>Video</span>
         </h1>
       </div>
+      <button className={classNames("button-style-none outline-button",styles.auth_btn)}>Log In</button>
     </div>
   );
 };

@@ -4,6 +4,9 @@
   padding: 0rem;
 }
 .navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 1rem 0rem;
   background-color: var(--white-color);
@@ -38,6 +41,15 @@
   to {
     background-position: 200%;
   }
+}
+.auth_btn {
+  padding: 0.5rem 1rem;
+  font-size: larger;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.auth_btn:hover {
+  background-color: var(--primary-color);
 }
 .hamburger_icon {
   cursor: pointer;
