@@ -31,13 +31,11 @@ export const VideoCard = ({ card, toolTip }) => {
         to={`/watch/${videoYTId}`}
         className={classNames(styles.thumbnail_container)}
       >
-        {/* <div> */}
         <img
           src={thumbnail && thumbnail.url}
           alt={thumbnail && thumbnail.altText}
           className={classNames(styles.thumbnail)}
         />
-        {/* </div> */}
         <div className={classNames(styles.timeStamp)}>
           <TimerOutlinedIcon sx={{ fontSize: 18 }} />
           <p>{timeStamp}</p>

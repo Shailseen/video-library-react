@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.container > img {
+  width: 15rem;
+  height: auto;
+  border-radius: 4px;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 1rem;
+}
+.textContainer p:nth-child(1) {
+  font-weight: bold;
+  font-size: large;
+}
+.textContainer p:nth-child(2) {
+  color: grey;
+  margin: auto 0rem;
+}
+.deleteIcon {
+  margin-left: auto;
+  visibility: hidden;
+}
+.container:hover .deleteIcon{
+    visibility: visible;
+    cursor: pointer;
+}
+.deleteIcon:hover {
+    color: red;
+}

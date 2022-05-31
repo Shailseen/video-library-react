@@ -4,12 +4,20 @@ import brandLogo from "../../assets/brandLogo/brandLogo.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useAside } from "../../context/aside-context";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
+import { useVideo } from "../../context/videos-context";
 
 export const Navbar = () => {
   const { setAside, aside } = useAside();
+  const {logoutHandler} = useAuth();
+  const {setLikeVideos} = useVideo();
+  const encodedToken = localStorage.getItem("userToken");
+
   const hamburgerHandler = () => {
     aside[0] ? setAside(() => [false, true]) : setAside(() => [true, false]);
   };
+
   return (
     <div className={classNames(styles.navbarContainer)}>
       <div className={classNames(styles.header_container_navbar)}>
@@ -27,7 +35,28 @@ export const Navbar = () => {
           <span className={classNames(styles.brand_text)}>Video</span>
         </h1>
       </div>
-      <button className={classNames("button-style-none outline-button",styles.auth_btn)}>Log In</button>
+      {!encodedToken ? (
+        <Link to="/login">
+          <button
+            className={classNames(
+              "button-style-none outline-button",
+              styles.auth_btn
+            )}
+          >
+            Log In
+          </button>
+        </Link>
+      ) : (
+        <button
+        onClick={() => logoutHandler(setLikeVideos)}
+          className={classNames(
+            "button-style-none outline-button",
+            styles.auth_btn
+          )}
+        >
+          Logout
+        </button>
+      )}
     </div>
   );
 };
