@@ -15,7 +15,7 @@ export const LoginPage = () => {
     setPassword((prev) => event.target.value);
   };
   const guestLoginHandler = () => {
-    getLogin("adarshbalika@gmail.com", "adarshBalika123");
+    getLogin("shailesh@gmail.com", "Shailesh123");
   };
   return (
     <>
