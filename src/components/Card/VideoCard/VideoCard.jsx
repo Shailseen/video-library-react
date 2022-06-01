@@ -7,6 +7,8 @@ import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
 import RemoveDoneOutlinedIcon from "@mui/icons-material/RemoveDoneOutlined";
 import { NavLink } from "react-router-dom";
 import { useToolTips } from "../../../context/toolTip-context";
+import { useVideo } from "../../../context/videos-context";
+import { addToHistory } from "../../../services/HistoryServices/addToHistory.js";
 export const VideoCard = ({ card, toolTip }) => {
   const {
     _id,
@@ -19,17 +21,32 @@ export const VideoCard = ({ card, toolTip }) => {
     isInWatchLater,
     videoYTId,
   } = card;
-  var titles
+  var titles;
   (function reduceTitleLength() {
-    titles = title.length > 65 ? title.split('').slice(0,64).concat([".",".","."]).join('') : title
-  })()
-  const { toggleHandler } = useToolTips();
+    titles =
+      title.length > 65
+        ? title
+            .split("")
+            .slice(0, 64)
+            .concat([".", ".", "."])
+            .join("")
+        : title;
+  })();
 
+  const { toggleHandler } = useToolTips();
+  const { setHistoryVideos } = useVideo();
+
+  const encodedToken = localStorage.getItem("userToken");
+
+  const addToHistoryHandler = () => {
+    if (encodedToken) addToHistory(card, setHistoryVideos);
+  };
   return (
     <div key={_id} className={classNames(styles.card_container)}>
       <NavLink
         to={`/watch/${videoYTId}`}
         className={classNames(styles.thumbnail_container)}
+        onClick={addToHistoryHandler}
       >
         <img
           src={thumbnail && thumbnail.url}

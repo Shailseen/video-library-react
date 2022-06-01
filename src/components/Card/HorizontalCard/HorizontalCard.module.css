@@ -26,6 +26,7 @@
 .deleteIcon {
   margin-left: auto;
   visibility: hidden;
+  height: fit-content;
 }
 .container:hover .deleteIcon{
     visibility: visible;
