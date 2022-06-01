@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 import styles from "../Navigation.module.css";
 
-export const NavigationLogin = () => {
+export const NavigationLogin = ({message}) => {
   const navigate = useNavigate();
   const loginNavigateHandler = () => {
     navigate("/login");
@@ -13,7 +13,7 @@ export const NavigationLogin = () => {
         {" "}
         <div className={styles.text}>
           {" "}
-          You need to login for explore liked videos.
+          {message}
         </div>{" "}
         <button
           onClick={loginNavigateHandler}

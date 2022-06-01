@@ -5,3 +5,5 @@ export const REMOVE_LIKE_API = "/api/user/likes";
 export const ADD_TO_HISTORY_API = "/api/user/history";
 export const REMOVE_FROM_HISTORY_API = "/api/user/history";
 export const REMOVE_ALL_FROM_HISTORY_API = "/api/user/history/all";
+export const ADD_TO_WATCH_LATER_API = "/api/user/watchlater";
+export const REMOVE_FROM_WATCH_LATER_API = "/api/user/watchlater";

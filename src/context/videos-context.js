@@ -13,6 +13,8 @@ const VideoProvider = ({ children }) => {
   const [videos, setVideos] = useState([]);
   const [likeVideos, setLikeVideos] = useState([]);
   const [historyVideos,setHistoryVideos] = useState([]);
+  const [watchLaterVideos,setWatchLaterVideos] = useState([]);
+  
   useEffect(async () => {
     try {
       const response = await axios.get(VIDEOS_API);
@@ -22,27 +24,10 @@ const VideoProvider = ({ children }) => {
     }
   }, []);
 
-  // const getVideosByCategory = (category) => {
-  //   (async () => {
-  //     try {
-  //       const response = await axios.get(VIDEOS_API);
-  //       if(category === "All") {
-  //         setVideos(response.data.videos);
-  //       }
-  //       else {
-  //         let temp = response.data.videos.map((obj) => obj.categoryName === category && obj)
-  //         setVideos(temp);
-  //       }
-  //       setVideos(response.data.videos);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })()
-  // };
-
+ 
   return (
     <VideoContext.Provider
-      value={{ videos, setVideos, likeVideos, setLikeVideos ,setHistoryVideos,historyVideos}}
+      value={{ videos, setVideos, likeVideos, setLikeVideos ,setHistoryVideos,historyVideos,watchLaterVideos,setWatchLaterVideos}}
     >
       {children}
     </VideoContext.Provider>

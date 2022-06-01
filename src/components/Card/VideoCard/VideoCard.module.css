@@ -99,3 +99,9 @@
 .video_description_container > p > small{
   color: grey;
 }
+.flex_container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

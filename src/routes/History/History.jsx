@@ -13,7 +13,7 @@ export default function History() {
   return (
     <div className={styles.container}>
       {encodedToken === null ? (
-        <NavigationLogin />
+        <NavigationLogin message={"You need to login for explore history videos"} />
       ) : historyVideos.length === 0 ? (
         <NavigationHome
           message={"You have to watch videos for listing history."}

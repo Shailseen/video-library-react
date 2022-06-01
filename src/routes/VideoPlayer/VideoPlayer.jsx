@@ -14,9 +14,11 @@ import { useAuth } from "../../context/auth-context";
 import { removeFromLiked } from "../../services/LikeServices/removeFromLiked";
 import { addToLiked } from "../../services/LikeServices/addToLiked";
 import { useVideo } from "../../context/videos-context";
+import { toast } from "react-toastify";
+import { addToWatchLater } from "../../services/WatchLaterServices/addToWatchLater";
 export const VideoPlayer = () => {
   const { videoId } = useParams();
-  const { videos, setVideos, likeVideos, setLikeVideos } = useVideo();
+  const { videos, likeVideos, setLikeVideos,setWatchLaterVideos } = useVideo();
   const [data, setData] = useState("");
   const {
     _id,
@@ -31,6 +33,7 @@ export const VideoPlayer = () => {
   const { isToken } = useAuth();
   const navigate = useNavigate();
   const encodedToken = localStorage.getItem("userToken");
+
   useEffect(() => {
     (async function() {
       try {
@@ -41,7 +44,11 @@ export const VideoPlayer = () => {
       }
     })();
   }, [videos]);
-  console.log(likeVideos);
+  
+  const watchLaterHandler = () => {
+    if(encodedToken) addToWatchLater(data, setWatchLaterVideos);
+    else toast("You have to login first."); 
+  }
 
   const handleLike = () => {
     if (encodedToken !==null) {
@@ -106,7 +113,7 @@ export const VideoPlayer = () => {
               <p>WATCH LATER</p>{" "}
             </div>
           ) : (
-            <div className={styles.icon_wrapper}>
+            <div className={styles.icon_wrapper} onClick={watchLaterHandler}>
               <WatchLaterOutlinedIcon
                 className={styles.cursor_pointer}
                 sx={{ fontSize: 25 }}

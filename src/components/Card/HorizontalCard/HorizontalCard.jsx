@@ -5,8 +5,9 @@ import { removeFromLiked } from "../../../services/LikeServices/removeFromLiked"
 import { useVideo } from "../../../context/videos-context";
 import { useNavigate } from "react-router-dom";
 import { removeFromHistory } from "../../../services/HistoryServices/removeFromHistory";
+import { removeFromWatchLater } from "../../../services/WatchLaterServices/removeFromWatchLater";
 export default function HorizontalCard({ cardData, type }) {
-  const { setLikeVideos, setHistoryVideos } = useVideo();
+  const { setLikeVideos, setHistoryVideos, setWatchLaterVideos } = useVideo();
   const { _id, title, creator, thumbnail, videoYTId } = cardData;
   const navigate = useNavigate();
   const navigateHandler = () => {
@@ -16,6 +17,7 @@ export default function HorizontalCard({ cardData, type }) {
     event.stopPropagation();
     if (type === "like") removeFromLiked(_id, setLikeVideos);
     else if (type === "history") removeFromHistory(_id, setHistoryVideos);
+    else if(type === "watchLater") removeFromWatchLater(_id,setWatchLaterVideos);
   };
   return (
     <div onClick={navigateHandler} className={styles.container}>

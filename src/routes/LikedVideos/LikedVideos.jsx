@@ -12,7 +12,7 @@ export default function LikedVideos() {
   return (
     <div className={styles.container}>
       {encodedToken === null ? (
-        <NavigationLogin />
+        <NavigationLogin message={"You need to login for explore like videos"} />
       ) : likeVideos.length === 0 ? (
         <NavigationHome message={"You have to like videos for listing like videos."} />
       ) : (
