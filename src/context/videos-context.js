@@ -11,6 +11,7 @@ const useVideo = () => useContext(VideoContext);
 
 const VideoProvider = ({ children }) => {
   const [videos, setVideos] = useState([]);
+  const [likeVideos, setLikeVideos] = useState([]);
   useEffect(async () => {
     try {
       const response = await axios.get(VIDEOS_API);
@@ -39,7 +40,9 @@ const VideoProvider = ({ children }) => {
   // };
 
   return (
-    <VideoContext.Provider value={{ videos}}>
+    <VideoContext.Provider
+      value={{ videos, setVideos, likeVideos, setLikeVideos }}
+    >
       {children}
     </VideoContext.Provider>
   );

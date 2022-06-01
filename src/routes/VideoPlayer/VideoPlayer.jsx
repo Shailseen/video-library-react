@@ -1,33 +1,36 @@
 import ReactPlayer from "react-player/lazy";
 import classNames from "classnames";
 import styles from "./VideoPlayer.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
 import PlaylistAddRoundedIcon from "@mui/icons-material/PlaylistAddRounded";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useAuth } from "../../context/auth-context";
+import { removeFromLiked } from "../../services/LikeServices/removeFromLiked";
+import { addToLiked } from "../../services/LikeServices/addToLiked";
+import { useVideo } from "../../context/videos-context";
 export const VideoPlayer = () => {
   const { videoId } = useParams();
+  const { videos, setVideos, likeVideos, setLikeVideos } = useVideo();
   const [data, setData] = useState("");
   const {
     _id,
     title,
     creator,
     creatorLogo,
-    thumbnail,
     views,
-    timeStamp,
     isInWatchLater,
-    videoYTId,
     isLiked,
     description,
   } = data;
-  console.log(creatorLogo);
+  const { isToken } = useAuth();
+  const navigate = useNavigate();
+  const encodedToken = localStorage.getItem("userToken");
   useEffect(() => {
     (async function() {
       try {
@@ -37,7 +40,16 @@ export const VideoPlayer = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [videos]);
+  console.log(likeVideos);
+
+  const handleLike = () => {
+    if (encodedToken !==null) {
+      const isLiked = likeVideos.some((item) => item._id === _id);
+      if (isLiked) removeFromLiked(_id, setLikeVideos);
+      else addToLiked(data, setLikeVideos);
+    } else navigate("/login");
+  };
 
   return (
     <div className={classNames(styles.container)}>
@@ -49,35 +61,33 @@ export const VideoPlayer = () => {
       />
       <p className={classNames(styles.title)}>{title}</p>
       <div className={classNames(styles.channel_logo_container)}>
-          {creatorLogo && (
-            <img
-              className={classNames("avatar", styles.avatar_xx_small)}
-              src={creatorLogo.url}
-              alt={creatorLogo.altText}
-            ></img>
-          )}
-          <div className={styles.channel_name_container}>
-            <p className={styles.channel_name}>{creator}</p>
-            <p className={styles.view}>{views}</p>
-          </div>
+        {creatorLogo && (
+          <img
+            className={classNames("avatar", styles.avatar_xx_small)}
+            src={creatorLogo.url}
+            alt={creatorLogo.altText}
+          ></img>
+        )}
+        <div className={styles.channel_name_container}>
+          <p className={styles.channel_name}>{creator}</p>
+          <p className={styles.view}>{views}</p>
         </div>
+      </div>
       <div className={classNames(styles.description_container)}>
         <div className={styles.tools_container}>
-          {isLiked ? (
-            <div className={styles.icon_wrapper}>
+          {likeVideos.some((item) => item._id === _id) ? (
+            <div onClick={handleLike} className={styles.icon_wrapper}>
               <ThumbUpRoundedIcon
                 className={styles.cursor_pointer}
                 sx={{ fontSize: 25 }}
               />{" "}
-              <p>DISLIKE</p>
             </div>
           ) : (
-            <div className={styles.icon_wrapper}>
+            <div onClick={handleLike} className={styles.icon_wrapper}>
               <ThumbUpOutlinedIcon
                 className={styles.cursor_pointer}
                 sx={{ fontSize: 25 }}
               />{" "}
-              <p>LIKE</p>
             </div>
           )}
           <div className={styles.icon_wrapper}>

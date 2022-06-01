@@ -45,24 +45,25 @@
   cursor: pointer;
 }
 .description {
-  padding-top: 2rem;
+  padding: 2rem 0rem;
   font-weight: bold;
+
 }
 .icon_wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
 }
 .icon_wrapper > p {
-    font-weight: bolder;
+  font-weight: bolder;
 }
-.icon_wrapper:hover{
-    background-color: #00000012;
+.icon_wrapper:hover {
+  background-color: #00000012;
 }
 
-@media only screen and (max-width: 699px){
+@media only screen and (max-width: 699px) {
   :root {
     font-size: 12px;
   }

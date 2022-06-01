@@ -14,8 +14,11 @@ import LikedVideos from "./routes/LikedVideos/LikedVideos";
 import WatchLater from "./routes/WatchLater/WatchLater";
 import History from "./routes/History/History";
 import { VideoPlayer } from "./routes/VideoPlayer/VideoPlayer";
-import { Tooltip } from "@mui/material";
 import { ToolTipsProvider } from "./context/toolTip-context";
+import { LoginPage } from "./routes/LoginPage/LoginPage";
+import { AuthProvider } from "./context/auth-context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Call make Server
 makeServer();
@@ -23,21 +26,25 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ToastContainer/>
       <VideoProvider>
-        <AsideProvider>
-          <ToolTipsProvider>
-            <Routes>
-              <Route path="/" element={<App />}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/playlist" element={<PlayList />} />
-                <Route path="/like" element={<LikedVideos />} />
-                <Route path="/watchLater" element={<WatchLater />} />
-                <Route path="/history" element={<History />} />
-                <Route path="/watch/:videoId" element={<VideoPlayer />} />
-              </Route>
-            </Routes>
-          </ToolTipsProvider>
-        </AsideProvider>
+        <AuthProvider>
+          <AsideProvider>
+            <ToolTipsProvider>
+              <Routes>
+                <Route path="/" element={<App />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/playlist" element={<PlayList />} />
+                  <Route path="/like" element={<LikedVideos />} />
+                  <Route path="/watchLater" element={<WatchLater />} />
+                  <Route path="/history" element={<History />} />
+                  <Route path="/watch/:videoId" element={<VideoPlayer />} />
+                  <Route path="login" element={<LoginPage />} />
+                </Route>
+              </Routes>
+            </ToolTipsProvider>
+          </AsideProvider>
+        </AuthProvider>
       </VideoProvider>
     </BrowserRouter>
   </React.StrictMode>,
