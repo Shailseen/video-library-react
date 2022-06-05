@@ -4,23 +4,21 @@ import styles from "./HorizontalCard.module.css";
 import { removeFromLiked } from "../../../services/LikeServices/removeFromLiked";
 import { useVideo } from "../../../context/videos-context";
 import { useNavigate } from "react-router-dom";
-export default function HorizontalCard({ cardData }) {
-  const { setLikeVideos } = useVideo();
-  const {
-    _id,
-    title,
-    creator,
-    thumbnail,
-    videoYTId
-  } = cardData;
+import { removeFromHistory } from "../../../services/HistoryServices/removeFromHistory";
+import { removeFromWatchLater } from "../../../services/WatchLaterServices/removeFromWatchLater";
+export default function HorizontalCard({ cardData, type }) {
+  const { setLikeVideos, setHistoryVideos, setWatchLaterVideos } = useVideo();
+  const { _id, title, creator, thumbnail, videoYTId } = cardData;
   const navigate = useNavigate();
   const navigateHandler = () => {
     navigate(`/watch/${videoYTId}`);
-  }
+  };
   const removeHandler = (event) => {
     event.stopPropagation();
-    removeFromLiked(_id, setLikeVideos);
-  }
+    if (type === "like") removeFromLiked(_id, setLikeVideos);
+    else if (type === "history") removeFromHistory(_id, setHistoryVideos);
+    else if(type === "watchLater") removeFromWatchLater(_id,setWatchLaterVideos);
+  };
   return (
     <div onClick={navigateHandler} className={styles.container}>
       <img src={thumbnail.url} alt={thumbnail.altText} />
@@ -29,7 +27,7 @@ export default function HorizontalCard({ cardData }) {
         <p>{creator}</p>
       </div>
       <div
-        onClick={(event) =>removeHandler(event)}
+        onClick={(event) => removeHandler(event)}
         className={styles.deleteIcon}
       >
         <DeleteIcon sx={{ fontSize: "35px" }} />
