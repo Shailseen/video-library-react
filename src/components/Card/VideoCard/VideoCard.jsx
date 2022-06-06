@@ -13,6 +13,7 @@ import { addToHistory } from "../../../services/HistoryServices/addToHistory.js"
 import { addToWatchLater } from "../../../services/WatchLaterServices/addToWatchLater";
 import Modal from "../../Modal/Modal";
 import { useState } from "react";
+import CreatePlaylistCard from "../CreatePlaylistCard/CreatePlaylistCard";
 export const VideoCard = ({ card, toolTip }) => {
   const {
     _id,
@@ -91,7 +92,7 @@ export const VideoCard = ({ card, toolTip }) => {
           onClick={() => toggleHandler(_id)}
           className={classNames(styles.toolTip_toggle)}
         >
-          <MoreVertIcon onClick={() => setIsOpen(true)}/>
+          <MoreVertIcon />
           <div
             className={classNames(
               styles.toolTip_container,
@@ -115,7 +116,7 @@ export const VideoCard = ({ card, toolTip }) => {
                 </>
               )}
             </div>
-            <div className={classNames(styles.toolTip_list)}>
+            <div className={classNames(styles.toolTip_list)} onClick={() => setIsOpen(true)}>
               <PlaylistAddOutlinedIcon />
               <p>Add to Playlist</p>
             </div>
@@ -123,7 +124,7 @@ export const VideoCard = ({ card, toolTip }) => {
         </div>
       </div>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <div>hi</div>
+        <CreatePlaylistCard/>
       </Modal>
     </div>
   );

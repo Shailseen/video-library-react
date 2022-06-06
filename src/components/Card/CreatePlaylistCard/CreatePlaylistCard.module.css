@@ -1,0 +1,18 @@
+.container {
+    padding: 0.5rem;
+}
+.btn {
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover {
+    background-color: var(--primary-color);
+}
+.input_btn_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.input_playlist_name {
+    padding: 6px;
+}
