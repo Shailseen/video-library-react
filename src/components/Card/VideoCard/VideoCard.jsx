@@ -124,7 +124,7 @@ export const VideoCard = ({ card, toolTip }) => {
         </div>
       </div>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <CreatePlaylistCard videoId={_id}/>
+        <CreatePlaylistCard video={card}/>
       </Modal>
     </div>
   );
