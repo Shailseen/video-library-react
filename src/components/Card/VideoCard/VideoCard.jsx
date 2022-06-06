@@ -11,6 +11,8 @@ import { useToolTips } from "../../../context/toolTip-context";
 import { useVideo } from "../../../context/videos-context";
 import { addToHistory } from "../../../services/HistoryServices/addToHistory.js";
 import { addToWatchLater } from "../../../services/WatchLaterServices/addToWatchLater";
+import Modal from "../../Modal/Modal";
+import { useState } from "react";
 export const VideoCard = ({ card, toolTip }) => {
   const {
     _id,
@@ -35,6 +37,7 @@ export const VideoCard = ({ card, toolTip }) => {
         : title;
   })();
 
+  const [isOpen,setIsOpen] = useState(false);
   const { toggleHandler } = useToolTips();
   const { setHistoryVideos, setWatchLaterVideos } = useVideo();
 
@@ -88,7 +91,7 @@ export const VideoCard = ({ card, toolTip }) => {
           onClick={() => toggleHandler(_id)}
           className={classNames(styles.toolTip_toggle)}
         >
-          <MoreVertIcon />
+          <MoreVertIcon onClick={() => setIsOpen(true)}/>
           <div
             className={classNames(
               styles.toolTip_container,
@@ -119,6 +122,9 @@ export const VideoCard = ({ card, toolTip }) => {
           </div>
         </div>
       </div>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <div>hi</div>
+      </Modal>
     </div>
   );
 };
