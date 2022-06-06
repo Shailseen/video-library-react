@@ -6,7 +6,7 @@ import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import { toast } from "react-toastify";
 import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
 import RemoveDoneOutlinedIcon from "@mui/icons-material/RemoveDoneOutlined";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useToolTips } from "../../../context/toolTip-context";
 import { useVideo } from "../../../context/videos-context";
 import { addToHistory } from "../../../services/HistoryServices/addToHistory.js";
@@ -14,6 +14,7 @@ import { addToWatchLater } from "../../../services/WatchLaterServices/addToWatch
 import Modal from "../../Modal/Modal";
 import { useState } from "react";
 import CreatePlaylistCard from "../CreatePlaylistCard/CreatePlaylistCard";
+
 export const VideoCard = ({ card, toolTip }) => {
   const {
     _id,
@@ -38,21 +39,25 @@ export const VideoCard = ({ card, toolTip }) => {
         : title;
   })();
 
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { toggleHandler } = useToolTips();
   const { setHistoryVideos, setWatchLaterVideos } = useVideo();
 
   const encodedToken = localStorage.getItem("userToken");
-  const navigate = useNavigate()
+
+  const modalHandler = () => {
+    if (encodedToken) setIsOpen(true);
+    else toast("You need to login first for use playlist!");
+  };
 
   const addToHistoryHandler = () => {
     if (encodedToken) addToHistory(card, setHistoryVideos);
   };
 
   const watchLaterHandler = () => {
-    if(encodedToken) addToWatchLater(card, setWatchLaterVideos);
+    if (encodedToken) addToWatchLater(card, setWatchLaterVideos);
     else toast("You have to login first.");
-  }
+  };
   return (
     <div key={_id} className={classNames(styles.card_container)}>
       <NavLink
@@ -116,7 +121,10 @@ export const VideoCard = ({ card, toolTip }) => {
                 </>
               )}
             </div>
-            <div className={classNames(styles.toolTip_list)} onClick={() => setIsOpen(true)}>
+            <div
+              className={classNames(styles.toolTip_list)}
+              onClick={modalHandler}
+            >
               <PlaylistAddOutlinedIcon />
               <p>Add to Playlist</p>
             </div>
@@ -124,7 +132,7 @@ export const VideoCard = ({ card, toolTip }) => {
         </div>
       </div>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <CreatePlaylistCard video={card}/>
+        <CreatePlaylistCard video={card} />
       </Modal>
     </div>
   );

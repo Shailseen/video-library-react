@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import { toast } from "react-toastify";
 
 const createPlaylistService = async (title, description,setPlaylistCategories) => {
   try {
@@ -18,9 +18,10 @@ const createPlaylistService = async (title, description,setPlaylistCategories) =
         },
       }
     );
+    toast("Create playlist successfully!");
     setPlaylistCategories(prev => res.data.playlists)
   } catch (error) {
-    console.log(error);
+    toast("Create playlist failed!");
   }
 };
 

@@ -1,9 +1,10 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    height: 100%;
 }
-.header {
-    padding: 0.5rem 0rem;
-    color: var(--primary-color);
+.heading{
+    color: grey;
 }

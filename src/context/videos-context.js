@@ -14,7 +14,7 @@ const VideoProvider = ({ children }) => {
   const [likeVideos, setLikeVideos] = useState([]);
   const [historyVideos, setHistoryVideos] = useState([]);
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
-  const [playlistVideos, setPlaylistVideos] = useState([[]]);
+  const [playlistVideos, setPlaylistVideos] = useState(null);
   const [playlistCategories, setPlaylistCategories] = useState([]);
 
   useEffect(async () => {
