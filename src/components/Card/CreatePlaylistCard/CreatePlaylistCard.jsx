@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import styles from "./CreatePlaylistCard.module.css";
 import createPlaylistService from "../../../services/PlaylistServices/createPlaylistService";
 import addVideoToPlaylistService from "../../../services/PlaylistServices/addVideoToPlaylistService";
+import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
 
 const CreatePlaylistCard = ({ video }) => {
   const { playlistCategories, setPlaylistCategories } = useVideo();
@@ -44,6 +45,9 @@ const CreatePlaylistCard = ({ video }) => {
         playlistCategories,
         setPlaylistCategories
       );
+    }
+    else {
+        deleteVideoFromPlaylistService(playlistId,video._id,playlistCategories,setPlaylistCategories);
     }
   };
 
