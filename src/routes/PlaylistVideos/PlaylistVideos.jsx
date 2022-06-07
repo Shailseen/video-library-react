@@ -52,15 +52,3 @@ const PlaylistVideos = () => {
 };
 
 export default PlaylistVideos;
-
-// {playlistVideos &&
-//   playlistVideos.videos.map((item) => {
-//     return (
-//       <HorizontalCard
-//         key={item._id}
-//         playlistId={playlistId}
-//         cardData={item}
-//         type="playlist"
-//       />
-//     );
-//   })}
