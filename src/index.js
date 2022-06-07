@@ -19,6 +19,7 @@ import { LoginPage } from "./routes/LoginPage/LoginPage";
 import { AuthProvider } from "./context/auth-context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PlaylistVideos from "./routes/PlaylistVideos/PlaylistVideos";
 
 // Call make Server
 makeServer();
@@ -26,7 +27,7 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ToastContainer/>
+      <ToastContainer />
       <VideoProvider>
         <AuthProvider>
           <AsideProvider>
@@ -40,6 +41,7 @@ ReactDOM.render(
                   <Route path="/history" element={<History />} />
                   <Route path="/watch/:videoId" element={<VideoPlayer />} />
                   <Route path="login" element={<LoginPage />} />
+                  <Route path="/playlistVideos/:playlistId" element={<PlaylistVideos />} />
                 </Route>
               </Routes>
             </ToolTipsProvider>

@@ -1,0 +1,41 @@
+.container {
+  padding: 0.5rem;
+}
+.btn {
+  font-weight: 700;
+}
+.btn:hover {
+  background-color: var(--primary-color);
+}
+.input_btn_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.input_playlist_name {
+  padding: 6px;
+}
+.btn_enabled {
+  cursor: pointer;
+}
+.btn_disabled {
+  cursor: not-allowed;
+  background-color: grey;
+  color: white;
+  border: 1px solid white;
+}
+.btn_disabled:hover {
+  background-color: grey;
+}
+.playlist_lists_container {
+  margin-top: 8px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.flex > label {
+    font-weight: 600;
+    font-size: 1.2rem;
+}

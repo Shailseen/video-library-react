@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
 const AuthContext = createContext();
 
 const useAuth = () => useContext(AuthContext);
@@ -38,7 +37,7 @@ const AuthProvider = ({ children }) => {
   const logoutHandler = (setLikeVideos) => {
     localStorage.clear();
     setIsToken((prev) => "");
-    setLikeVideos(prev => []);
+    setLikeVideos((prev) => []);
     toast("Logout Successfully!");
   };
   return (
