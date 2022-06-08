@@ -6,6 +6,8 @@ import { useVideo } from "../../context/videos-context";
 import styles from "./History.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { removeAllFromHistory } from "../../services/HistoryServices/removeAllFromHistory";
+import UseAnimations from 'react-useanimations';
+import trash from 'react-useanimations/lib/trash2'
 
 export default function History() {
   const { historyVideos, setHistoryVideos } = useVideo();
@@ -23,7 +25,7 @@ export default function History() {
           <header className={styles.header_container}>
             <h2 className={styles.heading}>{historyVideos.length} video</h2>
             <span onClick={() => removeAllFromHistory(setHistoryVideos)}>
-              <DeleteIcon sx={{ fontSize: "30px" }} />
+            <UseAnimations animation={trash} size={40}/>
             </span>
           </header>
           {historyVideos.map((item) => {

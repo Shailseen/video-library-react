@@ -1,5 +1,4 @@
 import React from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "./HorizontalCard.module.css";
 import { removeFromLiked } from "../../../services/LikeServices/removeFromLiked";
 import { useVideo } from "../../../context/videos-context";
@@ -7,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { removeFromHistory } from "../../../services/HistoryServices/removeFromHistory";
 import { removeFromWatchLater } from "../../../services/WatchLaterServices/removeFromWatchLater";
 import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
+
+import UseAnimations from 'react-useanimations';
+import trash from 'react-useanimations/lib/trash'
 
 export default function HorizontalCard({ cardData, type, playlistId }) {
   const {
@@ -49,7 +51,8 @@ export default function HorizontalCard({ cardData, type, playlistId }) {
         onClick={(event) => removeHandler(event)}
         className={styles.deleteIcon}
       >
-        <DeleteIcon sx={{ fontSize: "35px" }} />
+        <UseAnimations animation={trash} size={40}/>
+
       </div>
     </div>
   );

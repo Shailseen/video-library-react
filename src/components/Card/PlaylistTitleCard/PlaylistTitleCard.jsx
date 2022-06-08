@@ -2,8 +2,11 @@ import React from "react";
 import { useVideo } from "../../../context/videos-context";
 import { useNavigate } from "react-router-dom";
 import styles from "./PlaylistTitleCard.module.css";
-import DeleteIcon from "@mui/icons-material/Delete";
 import deletePlaylistService from "../../../services/PlaylistServices/deletePlaylistService";
+import UseAnimations from 'react-useanimations';
+import airplay from 'react-useanimations/lib/airplay'
+import trash from 'react-useanimations/lib/trash'
+
 const PlaylistTitleCard = ({ video, playlistId }) => {
   const { setPlaylistCategories } = useVideo();
   const { _id, title, videos } = video;
@@ -21,12 +24,15 @@ const PlaylistTitleCard = ({ video, playlistId }) => {
   return (
     // <Link className={styles.link} to={`/playlistVideos/${playlistId}`}>
     <div onClick={navigateHandler} key={_id} className={styles.container}>
+      <div>
+      <UseAnimations animation={airplay} size={40}/>
+      </div>
       <div className={styles.title}>
         <h2>{title}</h2>
         <p className={styles.video_count}>{videos.length} videos</p>
       </div>
       <div className={styles.delete_playlist} onClick={deletePlaylistHandler}>
-        <DeleteIcon sx={{ fontSize: "30px" }} />
+      <UseAnimations animation={trash} size={40}/>
       </div>
     </div>
     // </Link>

@@ -7,6 +7,8 @@ import { useAside } from "../../context/aside-context";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { useVideo } from "../../context/videos-context";
+import UseAnimations from 'react-useanimations';
+import menu3 from 'react-useanimations/lib/menu2'
 
 export const Navbar = () => {
   const { setAside, aside } = useAside();
@@ -22,11 +24,15 @@ export const Navbar = () => {
     <div className={classNames(styles.navbarContainer)}>
       <div className={classNames(styles.header_container_navbar)}>
         <h1 className={classNames(styles.mg_lt, styles.flex)}>
-          <FontAwesomeIcon
+        <UseAnimations animation={menu3}
+        onClick={hamburgerHandler}
+        className={classNames(styles.hamburger_icon)}
+         size={40}/>
+          {/* <FontAwesomeIcon
             onClick={hamburgerHandler}
             className={classNames(styles.hamburger_icon)}
             icon={faBars}
-          />
+          /> */}
           <img
             className={classNames(styles.brand_logo)}
             src={brandLogo}
