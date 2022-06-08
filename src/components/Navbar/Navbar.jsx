@@ -28,11 +28,6 @@ export const Navbar = () => {
         onClick={hamburgerHandler}
         className={classNames(styles.hamburger_icon)}
          size={40}/>
-          {/* <FontAwesomeIcon
-            onClick={hamburgerHandler}
-            className={classNames(styles.hamburger_icon)}
-            icon={faBars}
-          /> */}
           <img
             className={classNames(styles.brand_logo)}
             src={brandLogo}

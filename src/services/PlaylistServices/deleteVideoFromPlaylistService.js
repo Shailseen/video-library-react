@@ -6,8 +6,10 @@ const deleteVideoFromPlaylistService = async (
   videoId,
   playlistCategories,
   setPlaylistCategories
+  ,setIsApiPending
 ) => {
   try {
+    setIsApiPending(true);
     const encodedToken = localStorage.getItem("userToken");
     const res = await axios.delete(
       `/api/user/playlists/${playlistId}/${videoId}`,
@@ -17,6 +19,7 @@ const deleteVideoFromPlaylistService = async (
         },
       }
     );
+    setIsApiPending(false)
     let temp = playlistCategories;
     const newTemp = temp.map((item) =>
       item._id === playlistId ? res.data.playlist : item
@@ -24,6 +27,7 @@ const deleteVideoFromPlaylistService = async (
     setPlaylistCategories((prev) => newTemp);
     toast("Video delete from playlist successfully.");
   } catch (error) {
+    setIsApiPending(false)
     toast("Video could not deleted !");
   }
 };

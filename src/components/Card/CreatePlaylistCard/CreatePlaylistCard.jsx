@@ -10,7 +10,7 @@ import addVideoToPlaylistService from "../../../services/PlaylistServices/addVid
 import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
 
 const CreatePlaylistCard = ({ video }) => {
-  const { playlistCategories, setPlaylistCategories } = useVideo();
+  const { playlistCategories, setPlaylistCategories,setIsApiPending } = useVideo();
   const [playlistName, setPlaylistName] = useState("");
 
   const inputHandler = (e) => {
@@ -30,7 +30,7 @@ const CreatePlaylistCard = ({ video }) => {
 
   const addPlaylistCategoriesHandler = () => {
     if (!playlistCategories.some(isPlaylistNameExist)) {
-      createPlaylistService(playlistName, "", setPlaylistCategories);
+      createPlaylistService(playlistName, "", setPlaylistCategories,setIsApiPending);
     } else {
       toast(`Playlist ${playlistName} already created `);
     }
@@ -43,11 +43,12 @@ const CreatePlaylistCard = ({ video }) => {
         playlistId,
         video,
         playlistCategories,
-        setPlaylistCategories
+        setPlaylistCategories,
+        setIsApiPending
       );
     }
     else {
-        deleteVideoFromPlaylistService(playlistId,video._id,playlistCategories,setPlaylistCategories);
+        deleteVideoFromPlaylistService(playlistId,video._id,playlistCategories,setPlaylistCategories,setIsApiPending);
     }
   };
 

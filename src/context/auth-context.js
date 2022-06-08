@@ -4,12 +4,14 @@ import { LOGIN_API } from "../utils/utils";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useVideo } from "./videos-context";
 
 const AuthContext = createContext();
 
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
+  const {setIsApiPending} = useVideo()
   const encodedToken = localStorage.getItem("userToken");
   const [isToken, setIsToken] = useState("");
   const navigate = useNavigate();
@@ -20,11 +22,12 @@ const AuthProvider = ({ children }) => {
 
   const getLogin = async (email, password) => {
     try {
-      console.log(email, password);
+      setIsApiPending(true)
       const response = await axios.post(LOGIN_API, {
         email: email,
         password: password,
       });
+      setIsApiPending(false);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
       toast("Login Successfully! ");

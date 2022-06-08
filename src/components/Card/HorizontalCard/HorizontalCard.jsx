@@ -17,6 +17,7 @@ export default function HorizontalCard({ cardData, type, playlistId }) {
     setWatchLaterVideos,
     playlistCategories,
     setPlaylistCategories,
+    setIsApiPending
   } = useVideo();
   const { _id, title, creator, thumbnail, videoYTId } = cardData;
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ export default function HorizontalCard({ cardData, type, playlistId }) {
         playlistId,
         _id,
         playlistCategories,
-        setPlaylistCategories
+        setPlaylistCategories,
+        setIsApiPending
       );
   };
 

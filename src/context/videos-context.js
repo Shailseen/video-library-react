@@ -1,7 +1,4 @@
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import { useContext, useState, useEffect, createContext } from "react";
 import axios from "axios";
 import { VIDEOS_API } from "../utils/utils";
 
@@ -16,12 +13,16 @@ const VideoProvider = ({ children }) => {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
   const [playlistVideos, setPlaylistVideos] = useState(null);
   const [playlistCategories, setPlaylistCategories] = useState([]);
+  const [isApiPending, setIsApiPending] = useState(false);
 
   useEffect(async () => {
     try {
+      setIsApiPending(true);
       const response = await axios.get(VIDEOS_API);
+      setIsApiPending(false);
       setVideos(response.data.videos);
     } catch (error) {
+      setIsApiPending(false);
       console.log(error);
     }
   }, []);
@@ -41,6 +42,8 @@ const VideoProvider = ({ children }) => {
         setPlaylistVideos,
         playlistCategories,
         setPlaylistCategories,
+        isApiPending,
+        setIsApiPending,
       }}
     >
       {children}
