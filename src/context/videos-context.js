@@ -24,7 +24,6 @@ const VideoProvider = ({ children }) => {
       setVideos(response.data.videos);
     } catch (error) {
       setIsApiPending(false);
-      console.log(error);
     }
   }, []);
 

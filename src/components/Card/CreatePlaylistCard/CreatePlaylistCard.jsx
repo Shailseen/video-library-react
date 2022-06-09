@@ -67,9 +67,7 @@ export const CreatePlaylistCard = ({ video }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(playlistCategories);
-  }, [playlistCategories]);
+
 
   return (
     <div className={styles.container}>

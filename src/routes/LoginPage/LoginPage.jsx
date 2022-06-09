@@ -11,7 +11,6 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(from);
 
   const emailHandler = (event) => {
     setEmail((prev) => event.target.value);

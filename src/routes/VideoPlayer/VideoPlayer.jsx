@@ -29,6 +29,7 @@ export const VideoPlayer = () => {
     creatorLogo,
     views,
     isInWatchLater,
+    uploadAt,
     isLiked,
     description,
   } = data;
@@ -73,6 +74,7 @@ export const VideoPlayer = () => {
         url={`https://www.youtube.com/watch?v=${videoId}`}
       />
       <p className={classNames(styles.title)}>{title}</p>
+      <p className={styles.views_date}>{views} • {uploadAt}</p>
       <div className={classNames(styles.channel_logo_container)}>
         {creatorLogo && (
           <img
@@ -83,7 +85,6 @@ export const VideoPlayer = () => {
         )}
         <div className={styles.channel_name_container}>
           <p className={styles.channel_name}>{creator}</p>
-          <p className={styles.view}>{views}</p>
         </div>
       </div>
       <div className={classNames(styles.description_container)}>

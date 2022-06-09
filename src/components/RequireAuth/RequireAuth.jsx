@@ -4,7 +4,6 @@ const RequireAuth = ({ children }) => {
   const { isToken } = useAuth();
 
   const location = useLocation();
-  console.log(location)
   if (isToken) {
     return children;
   }

@@ -1,23 +1,40 @@
-import { useToolTips,useVideo } from "../../../context/index";
+import { useToolTips, useVideo } from "../../../context/index";
 import classNames from "classnames";
 import styles from "./VideoCardList.module.css";
 import { VideoCard } from "../../index";
-import { useState,useEffect } from "react";
-
+import { useState, useEffect } from "react";
 
 export const VideoCardList = () => {
   const { videos, searchVideosList } = useVideo();
   const [videoList, setVideoList] = useState();
   const [categoriesData, setCategoriesData] = useState([]);
-  const [videoListByCategory,setVideoListByCategory] = useState();
-
+  const [videoListByCategory, setVideoListByCategory] = useState();
+  const [sortBy, setSortBy] = useState("Relevant");
+  const [sortByVideoList, setSortByVideoList] = useState();
   const { toolTip } = useToolTips();
+
+  const sortVideos = (videos) => {
+    videos = JSON.parse(JSON.stringify(videos))
+    if (sortBy !== "Relevant") {
+      videos.sort(function(a, b) {
+        return new Date(b.uploadAt) - new Date(a.uploadAt);
+      });
+      setSortByVideoList((prev) => videos);  
+    }
+    else 
+    setSortByVideoList((prev) => videos);
+  };
+
+  useEffect(() => {
+    sortBy === "Relevant"
+      ? setSortByVideoList((prev) => videoList)
+      : sortVideos(videoList);
+  }, [sortBy, videoList]);
 
   const getVideosByCategories = (name) => {
     if (name === "All") {
       setVideoListByCategory(videos);
       setVideoList(videos);
-
     } else {
       let temp = videos.filter((obj) => obj.categoryName === name && obj);
       setVideoList(temp);
@@ -48,9 +65,9 @@ export const VideoCardList = () => {
       );
 
     const inBoth = (list1, list2) => operation(list1, list2, true);
-    console.log(searchVideosList)
-    if(searchVideosList.length && searchVideosList) setVideoList(inBoth(searchVideosList,videoListByCategory))
-  }, [searchVideosList,videoListByCategory]);
+    if (searchVideosList.length && searchVideosList)
+      setVideoList(inBoth(searchVideosList, videoListByCategory));
+  }, [searchVideosList, videoListByCategory]);
 
   const chipsStyleHandler = (index) => {
     let tempArr = JSON.parse(JSON.stringify(categoriesData));
@@ -83,10 +100,30 @@ export const VideoCardList = () => {
             </div>
           ))}
       </div>
-      {videos && videoList && <p className={styles.results}>Showing results {videoList.length}/{videos.length}</p>}
+
+      <div className={styles.sort_container}>
+        <button
+          className={classNames("button-style-none solid-button", styles.btn)}
+          onClick={() => setSortBy(prev => "Relevant")}
+        >
+          Relevant
+        </button>
+        <button
+          className={classNames("button-style-none solid-button", styles.btn)}
+          onClick={() => setSortBy(prev => "Latest Videos")}
+        >
+          Latest Videos
+        </button>
+      </div>
+
+      {videos && videoList && (
+        <p className={styles.results}>
+          Showing results {videoList.length}/{videos.length}
+        </p>
+      )}
       <div className={classNames(styles.cardList_container)}>
-        {videoList &&
-          videoList.map((card) => (
+        {sortByVideoList &&
+          sortByVideoList.map((card) => (
             <VideoCard
               key={card._id}
               card={card}
