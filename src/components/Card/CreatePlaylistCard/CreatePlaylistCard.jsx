@@ -42,7 +42,7 @@ export const CreatePlaylistCard = ({ video }) => {
         setIsApiPending
       );
     } else {
-      toast(`Playlist ${playlistName} already created `);
+      toast.info(`Playlist ${playlistName} already created `);
     }
     setPlaylistName("");
   };

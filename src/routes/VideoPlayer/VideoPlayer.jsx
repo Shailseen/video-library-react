@@ -53,7 +53,7 @@ export const VideoPlayer = () => {
 
   const watchLaterHandler = () => {
     if (encodedToken) addToWatchLater(data, setWatchLaterVideos);
-    else toast("You have to login first.");
+    else toast.warn("You have to login first.");
   };
 
   const handleLike = () => {

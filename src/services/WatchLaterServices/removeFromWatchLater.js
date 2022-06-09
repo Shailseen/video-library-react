@@ -14,9 +14,9 @@ export const removeFromWatchLater = async (card, setWatchLaterVideos) => {
       }
     );
     card.isInWatchLater = false;
-    toast("Video remove watch later successfully.");
+    toast.success("Video remove watch later successfully.");
     setWatchLaterVideos(response.data.watchlater);
   } catch (error) {
-    toast("Could not remove video from watch later!");
+    toast.error("Could not remove video from watch later!");
   }
 };

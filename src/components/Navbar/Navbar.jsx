@@ -18,7 +18,6 @@ export const Navbar = () => {
 
   let location = useLocation();
   location = location.pathname;
-  console.log(location)
 
   useEffect(() => {
     if (videos) setSearchVideosList(videos);

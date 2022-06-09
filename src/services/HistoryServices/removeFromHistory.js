@@ -10,9 +10,9 @@ export const removeFromHistory = async (_id, setHistoryVideos) => {
         authorization: encodedToken,
       },
     });
-    toast("Video removed from History successfully!");
+    toast.success("Video removed from History successfully!");
     setHistoryVideos(response.data.history);
   } catch (error) {
-    toast("Video could not delete from history!");
+    toast.error("Video could not delete from history!");
   }
 };

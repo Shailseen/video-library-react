@@ -25,11 +25,11 @@ const createPlaylistService = async (
       }
     );
     setIsApiPending(false);
-    toast("Create playlist successfully!");
+    toast.success("Create playlist successfully!");
     setPlaylistCategories((prev) => res.data.playlists);
   } catch (error) {
     setIsApiPending(false);
-    toast("Create playlist failed!");
+    toast.error("Create playlist failed!");
   }
 };
 

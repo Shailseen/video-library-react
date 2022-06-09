@@ -30,17 +30,17 @@ const AuthProvider = ({ children }) => {
       setIsApiPending(false);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
-      toast("Login Successfully! ");
+      toast.success("Login Successfully! ");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Login failed!")
     }
   };
 
   const logoutHandler = () => {
     localStorage.clear();
     setIsToken((prev) => "");
-    toast("Logout Successfully!");
+    toast.success("Logout Successfully!");
   };
   return (
     <AuthContext.Provider value={{ getLogin, logoutHandler, isToken }}>

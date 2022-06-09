@@ -13,10 +13,10 @@ const deletePlaylistService = async (playlistId, setPlaylistCategories,setIsApiP
     });
     setIsApiPending(false)
     setPlaylistCategories((prev) => res.data.playlists);
-    toast("Playlist deleted successfully!");
+    toast.success("Playlist deleted successfully!");
   } catch (error) {
     setIsApiPending(false);
-    toast("Playlist deletion failed!");
+    toast.error("Playlist deletion failed!");
   }
 };
 

@@ -25,10 +25,10 @@ const deleteVideoFromPlaylistService = async (
       item._id === playlistId ? res.data.playlist : item
     );
     setPlaylistCategories((prev) => newTemp);
-    toast("Video delete from playlist successfully.");
+    toast.success("Video delete from playlist successfully.");
   } catch (error) {
     setIsApiPending(false)
-    toast("Video could not deleted !");
+    toast.error("Video could not deleted !");
   }
 };
 

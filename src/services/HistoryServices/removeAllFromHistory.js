@@ -12,9 +12,9 @@ export const removeAllFromHistory = async (setHistoryVideos,setIsApiPending) => 
       },
     });
     setIsApiPending(false);
-    toast("History cleared successfully!");
+    toast.success("History cleared successfully!");
     setHistoryVideos(response.data.history);
   } catch (error) {
-    toast("Could not clear history!");
+    toast.error("Could not clear history!");
   }
 };

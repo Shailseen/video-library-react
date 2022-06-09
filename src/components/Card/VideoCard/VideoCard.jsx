@@ -50,7 +50,7 @@ export const VideoCard = ({ card, toolTip }) => {
 
   const modalHandler = () => {
     if (encodedToken) setIsOpen(true);
-    else toast("You need to login first for use playlist!");
+    else toast.warn("You need to login first for use playlist!");
   };
 
   const addToHistoryHandler = () => {
@@ -62,7 +62,7 @@ export const VideoCard = ({ card, toolTip }) => {
       isInWatchLater===false
         ? addToWatchLater(card, setWatchLaterVideos)
         : removeFromWatchLater(card, setWatchLaterVideos);
-    } else toast("You have to login first.");
+    } else toast.warn("You have to login first.");
   };
 
   return (
