@@ -80,15 +80,18 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .brand_text{
-      display: none;
+  .brand_text {
+    display: none;
   }
 }
 
-.show_searchbox{
+.show_searchbox {
   display: block;
 }
 
 .hide_searchbox {
   display: none;
+}
+.header_container_navbar {
+  text-decoration: none;
 }

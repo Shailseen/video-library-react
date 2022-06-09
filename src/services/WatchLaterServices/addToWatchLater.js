@@ -15,6 +15,7 @@ export const addToWatchLater = async (data,setWatchLaterVideos) => {
                     authorization: encodedToken,
                 }
             })
+            data.isInWatchLater = true;
             toast("Video add to watch later successfully.");
             setWatchLaterVideos(response.data.watchlater);
     } catch (error) {

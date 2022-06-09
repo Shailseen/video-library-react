@@ -11,8 +11,6 @@ import {
   ThumbUpOutlinedIcon,
   ThumbUpRoundedIcon,
   PlaylistAddRoundedIcon,
-  WatchLaterOutlinedIcon,
-  CheckCircleOutlineIcon,
 } from "../../utils/materialUiIcons";
 import {
   addToWatchLater,
@@ -112,23 +110,6 @@ export const VideoPlayer = () => {
             />{" "}
             <p>SAVE TO PLAYLIST</p>{" "}
           </div>
-          {isInWatchLater ? (
-            <div className={styles.icon_wrapper}>
-              <CheckCircleOutlineIcon
-                className={styles.cursor_pointer}
-                sx={{ fontSize: 25 }}
-              />{" "}
-              <p>WATCH LATER</p>{" "}
-            </div>
-          ) : (
-            <div className={styles.icon_wrapper} onClick={watchLaterHandler}>
-              <WatchLaterOutlinedIcon
-                className={styles.cursor_pointer}
-                sx={{ fontSize: 25 }}
-              />{" "}
-              <p>WATCH LATER</p>{" "}
-            </div>
-          )}
         </div>
       </div>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>

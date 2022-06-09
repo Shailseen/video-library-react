@@ -1,20 +1,13 @@
 import styles from "./Navbar.module.css";
 import classNames from "classnames";
 import brandLogo from "../../assets/brandLogo/brandLogo.jpg";
-import { useAside } from "../../context/aside-context";
+import { useAuth,useAside,useVideo } from "../../context/index";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
-import { useVideo } from "../../context/videos-context";
 import UseAnimations from "react-useanimations";
 import menu3 from "react-useanimations/lib/menu2";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
-import { useCallback } from "react";
+import { useEffect,useCallback,useState } from "react";
 import debounce from "lodash.debounce";
-import { useEffect } from "react";
-import { style } from "@mui/system";
-
-
 
 export const Navbar = () => {
   const { setAside, aside } = useAside();
@@ -63,7 +56,7 @@ export const Navbar = () => {
 
   return (
     <div className={classNames(styles.navbarContainer)}>
-      <div className={classNames(styles.header_container_navbar)}>
+      <Link to="/" className={classNames(styles.header_container_navbar)}>
         <h1 className={classNames(styles.mg_lt, styles.flex)}>
           <UseAnimations
             animation={menu3}
@@ -78,7 +71,7 @@ export const Navbar = () => {
           />
           <span className={classNames(styles.brand_text)}>dekho</span>
         </h1>
-      </div>
+      </Link>
       <div className={classNames(styles.searchbar,location!=="/" && styles.hide_searchbox)}>
         <input
           type="text"

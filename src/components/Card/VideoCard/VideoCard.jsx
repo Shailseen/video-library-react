@@ -10,7 +10,11 @@ import {
 } from "../../../utils/materialUiIcons";
 import { NavLink } from "react-router-dom";
 import { useToolTips, useVideo } from "../../../context/index";
-import { addToWatchLater, addToHistory } from "../../../services/index";
+import {
+  addToWatchLater,
+  addToHistory,
+  removeFromWatchLater,
+} from "../../../services/index";
 import { useState } from "react";
 import { CreatePlaylistCard, Modal } from "../../index";
 
@@ -54,9 +58,13 @@ export const VideoCard = ({ card, toolTip }) => {
   };
 
   const watchLaterHandler = () => {
-    if (encodedToken) addToWatchLater(card, setWatchLaterVideos);
-    else toast("You have to login first.");
+    if (encodedToken) {
+      isInWatchLater===false
+        ? addToWatchLater(card, setWatchLaterVideos)
+        : removeFromWatchLater(card, setWatchLaterVideos);
+    } else toast("You have to login first.");
   };
+
   return (
     <div key={_id} className={classNames(styles.card_container)}>
       <NavLink
@@ -114,10 +122,12 @@ export const VideoCard = ({ card, toolTip }) => {
                   <WatchLaterOutlinedIcon /> <p>Add to Watch Later</p>
                 </div>
               ) : (
-                <>
+                <div
+                onClick={watchLaterHandler}
+                className={styles.flex_container}>
                   {" "}
-                  <WatchLaterOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
-                </>
+                  <RemoveDoneOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
+                </div>
               )}
             </div>
             <div

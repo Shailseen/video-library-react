@@ -6,7 +6,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
-// import RemoveDoneOutlinedIcon from '@mui/icons-material/RemoveDoneOutlinedIcon';
+import RemoveDoneOutlinedIcon from '@mui/icons-material/RemoveDoneOutlined';
 
 export {
   ThumbUpOutlinedIcon,
@@ -17,5 +17,5 @@ export {
   MoreVertIcon,
   TimerOutlinedIcon,
   PlaylistAddOutlinedIcon,
-//   RemoveDoneOutlinedIcon
+  RemoveDoneOutlinedIcon
 };

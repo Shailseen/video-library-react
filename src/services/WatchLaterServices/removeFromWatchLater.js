@@ -2,17 +2,18 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { REMOVE_FROM_WATCH_LATER_API } from "../../utils/utils";
 
-export const removeFromWatchLater = async (_id, setWatchLaterVideos) => {
+export const removeFromWatchLater = async (card, setWatchLaterVideos) => {
   try {
     const encodedToken = localStorage.getItem("userToken");
     const response = await axios.delete(
-      REMOVE_FROM_WATCH_LATER_API + `/${_id}`,
+      REMOVE_FROM_WATCH_LATER_API + `/${card._id}`,
       {
         headers: {
           authorization: encodedToken,
         },
       }
     );
+    card.isInWatchLater = false;
     toast("Video remove watch later successfully.");
     setWatchLaterVideos(response.data.watchlater);
   } catch (error) {
