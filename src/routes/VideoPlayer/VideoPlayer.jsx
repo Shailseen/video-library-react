@@ -16,6 +16,8 @@ import { addToLiked } from "../../services/LikeServices/addToLiked";
 import { useVideo } from "../../context/videos-context";
 import { toast } from "react-toastify";
 import { addToWatchLater } from "../../services/WatchLaterServices/addToWatchLater";
+import Modal from "../../components/Modal/Modal";
+import CreatePlaylistCard from "../../components/Card/CreatePlaylistCard/CreatePlaylistCard";
 export const VideoPlayer = () => {
   const { videoId } = useParams();
   const { videos, likeVideos, setLikeVideos,setWatchLaterVideos } = useVideo();
@@ -30,10 +32,16 @@ export const VideoPlayer = () => {
     isLiked,
     description,
   } = data;
-  const { isToken } = useAuth();
+  
   const navigate = useNavigate();
   const encodedToken = localStorage.getItem("userToken");
+  const [isOpen,setIsOpen] = useState(false);
 
+
+  const playlistModalHandler = () => {
+  encodedToken ? setIsOpen(true) : toast("You have to login first!");
+
+  }
   useEffect(() => {
     (async function() {
       try {
@@ -97,7 +105,7 @@ export const VideoPlayer = () => {
               />{" "}
             </div>
           )}
-          <div className={styles.icon_wrapper}>
+          <div className={styles.icon_wrapper} onClick={playlistModalHandler}>
             <PlaylistAddRoundedIcon
               className={styles.cursor_pointer}
               sx={{ fontSize: 25 }}
@@ -123,6 +131,9 @@ export const VideoPlayer = () => {
           )}
         </div>
       </div>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <CreatePlaylistCard video={data} />
+      </Modal>
       <p className={styles.description}>{description}</p>
     </div>
   );
