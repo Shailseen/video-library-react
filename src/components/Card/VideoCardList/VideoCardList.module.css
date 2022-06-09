@@ -47,3 +47,8 @@
         width: 100%;
     }
 }
+
+.results {
+    color: #808080;
+    margin-bottom: 0.5rem;
+}

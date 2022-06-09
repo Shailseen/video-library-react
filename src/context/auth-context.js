@@ -37,10 +37,9 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logoutHandler = (setLikeVideos) => {
+  const logoutHandler = () => {
     localStorage.clear();
     setIsToken((prev) => "");
-    setLikeVideos((prev) => []);
     toast("Logout Successfully!");
   };
   return (

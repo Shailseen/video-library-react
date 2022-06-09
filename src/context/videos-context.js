@@ -14,6 +14,7 @@ const VideoProvider = ({ children }) => {
   const [playlistVideos, setPlaylistVideos] = useState(null);
   const [playlistCategories, setPlaylistCategories] = useState([]);
   const [isApiPending, setIsApiPending] = useState(false);
+  const [searchVideosList,setSearchVideosList] = useState([]);
 
   useEffect(async () => {
     try {
@@ -44,6 +45,8 @@ const VideoProvider = ({ children }) => {
         setPlaylistCategories,
         isApiPending,
         setIsApiPending,
+        searchVideosList,
+        setSearchVideosList
       }}
     >
       {children}
