@@ -3,23 +3,25 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { AsideProvider } from "./context/aside-context";
-import { VideoProvider } from "./context/videos-context";
-import { BrowserRouter } from "react-router-dom";
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-import { HomePage } from "./routes/HomePage/HomePage";
-import PlayList from "./routes/PlayList/PlayList";
-import LikedVideos from "./routes/LikedVideos/LikedVideos";
-import WatchLater from "./routes/WatchLater/WatchLater";
-import History from "./routes/History/History";
-import { VideoPlayer } from "./routes/VideoPlayer/VideoPlayer";
-import { ToolTipsProvider } from "./context/toolTip-context";
-import { LoginPage } from "./routes/LoginPage/LoginPage";
-import { AuthProvider } from "./context/auth-context";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PlaylistVideos from "./routes/PlaylistVideos/PlaylistVideos";
+import {
+  History,
+  HomePage,
+  LikedVideos,
+  LoginPage,
+  PlayList,
+  PlaylistVideos,
+  VideoPlayer,
+  WatchLater,
+} from "./routes/index";
+import {
+  ToolTipsProvider,
+  AuthProvider,
+  AsideProvider,
+  VideoProvider,
+} from "./context/index";
 
 // Call make Server
 makeServer();
@@ -41,7 +43,10 @@ ReactDOM.render(
                   <Route path="/history" element={<History />} />
                   <Route path="/watch/:videoId" element={<VideoPlayer />} />
                   <Route path="login" element={<LoginPage />} />
-                  <Route path="/playlistVideos/:playlistId" element={<PlaylistVideos />} />
+                  <Route
+                    path="/playlistVideos/:playlistId"
+                    element={<PlaylistVideos />}
+                  />
                 </Route>
               </Routes>
             </ToolTipsProvider>
