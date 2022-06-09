@@ -1,7 +1,5 @@
 import React from "react";
-import HorizontalCard from "../../components/Card/HorizontalCard/HorizontalCard";
-import { NavigationHome } from "../../components/Navigation/NavigationHome/NavigationHome";
-import { NavigationLogin } from "../../components/Navigation/NavigationLogin/NavigationLogin";
+import {HorizontalCard, NavigationHome,NavigationLogin } from "../../components/index";
 import { useVideo } from "../../context/videos-context";
 import styles from "./History.module.css";
 import { removeAllFromHistory } from "../../services/HistoryServices/removeAllFromHistory";

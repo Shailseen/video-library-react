@@ -7,7 +7,7 @@ import UseAnimations from 'react-useanimations';
 import airplay from 'react-useanimations/lib/airplay'
 import trash from 'react-useanimations/lib/trash'
 
-const PlaylistTitleCard = ({ video, playlistId }) => {
+export const PlaylistTitleCard = ({ video, playlistId }) => {
   const { setPlaylistCategories,setIsApiPending } = useVideo();
   const { _id, title, videos } = video;
   const navigate = useNavigate();
@@ -39,4 +39,4 @@ const PlaylistTitleCard = ({ video, playlistId }) => {
   );
 };
 
-export default PlaylistTitleCard;
+

@@ -1,12 +1,13 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useVideo } from "../../context/videos-context";
-import getPlaylistVideosService from "../../services/PlaylistServices/getPlaylistVideosService";
-import HorizontalCard from "../../components/Card/HorizontalCard/HorizontalCard";
-import { NavigationLogin } from "../../components/Navigation/NavigationLogin/NavigationLogin";
-import { NavigationHome } from "../../components/Navigation/NavigationHome/NavigationHome";
-import styles from "./PlaylistVideos.module.css"
+import { useVideo } from "../../context/index";
+import { getPlaylistVideosService } from "../../services/index";
+import styles from "./PlaylistVideos.module.css";
+import {
+  NavigationHome,
+  HorizontalCard,
+  NavigationLogin,
+} from "../../components/index";
 
 const PlaylistVideos = () => {
   const { playlistId } = useParams();

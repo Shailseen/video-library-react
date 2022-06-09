@@ -1,8 +1,7 @@
 import React from "react";
-import HorizontalCard from "../../components/Card/HorizontalCard/HorizontalCard";
-import { NavigationHome } from "../../components/Navigation/NavigationHome/NavigationHome";
-import { NavigationLogin } from "../../components/Navigation/NavigationLogin/NavigationLogin";
-import { useVideo } from "../../context/videos-context";
+
+import {NavigationLogin,HorizontalCard, NavigationHome } from "../../components/index";
+import { useVideo } from "../../context/index";
 import styles from "./WatchLater.module.css";
 
 export default function WatchLater() {

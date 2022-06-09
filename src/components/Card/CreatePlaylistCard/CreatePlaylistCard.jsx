@@ -9,7 +9,7 @@ import createPlaylistService from "../../../services/PlaylistServices/createPlay
 import addVideoToPlaylistService from "../../../services/PlaylistServices/addVideoToPlaylistService";
 import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
 
-const CreatePlaylistCard = ({ video }) => {
+export const CreatePlaylistCard = ({ video }) => {
   const { playlistCategories, setPlaylistCategories,setIsApiPending } = useVideo();
   const [playlistName, setPlaylistName] = useState("");
 
@@ -98,4 +98,4 @@ const CreatePlaylistCard = ({ video }) => {
   );
 };
 
-export default CreatePlaylistCard;
+

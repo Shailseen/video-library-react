@@ -1,19 +1,18 @@
 import styles from "./VideoCard.module.css";
 import classNames from "classnames";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
-import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import { toast } from "react-toastify";
-import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
-import RemoveDoneOutlinedIcon from "@mui/icons-material/RemoveDoneOutlined";
+import {
+  MoreVertIcon,
+  TimerOutlinedIcon,
+  WatchLaterOutlinedIcon,
+  PlaylistAddOutlinedIcon,
+  RemoveDoneOutlinedIcon,
+} from "../../../utils/materialUiIcons";
 import { NavLink } from "react-router-dom";
-import { useToolTips } from "../../../context/toolTip-context";
-import { useVideo } from "../../../context/videos-context";
-import { addToHistory } from "../../../services/HistoryServices/addToHistory.js";
-import { addToWatchLater } from "../../../services/WatchLaterServices/addToWatchLater";
-import Modal from "../../Modal/Modal";
+import { useToolTips, useVideo } from "../../../context/index";
+import { addToWatchLater, addToHistory } from "../../../services/index";
 import { useState } from "react";
-import CreatePlaylistCard from "../CreatePlaylistCard/CreatePlaylistCard";
+import { CreatePlaylistCard, Modal } from "../../index";
 
 export const VideoCard = ({ card, toolTip }) => {
   const {
@@ -117,7 +116,7 @@ export const VideoCard = ({ card, toolTip }) => {
               ) : (
                 <>
                   {" "}
-                  <RemoveDoneOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
+                  <WatchLaterOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
                 </>
               )}
             </div>

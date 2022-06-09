@@ -10,7 +10,7 @@ import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/d
 import UseAnimations from 'react-useanimations';
 import trash from 'react-useanimations/lib/trash'
 
-export default function HorizontalCard({ cardData, type, playlistId }) {
+export function HorizontalCard({ cardData, type, playlistId }) {
   const {
     setLikeVideos,
     setHistoryVideos,
