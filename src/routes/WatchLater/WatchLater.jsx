@@ -1,8 +1,11 @@
 import React from "react";
-
-import {NavigationLogin,HorizontalCard, NavigationHome } from "../../components/index";
 import { useVideo } from "../../context/index";
 import styles from "./WatchLater.module.css";
+import {
+  NavigationLogin,
+  HorizontalCard,
+  NavigationHome,
+} from "../../components/index";
 
 export default function WatchLater() {
   const { watchLaterVideos } = useVideo();

@@ -7,6 +7,9 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
 import RemoveDoneOutlinedIcon from '@mui/icons-material/RemoveDoneOutlined';
+import HistoryRoundedIcon from "@mui/icons-material/HistoryRounded"
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
+import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined"
 
 export {
   ThumbUpOutlinedIcon,
@@ -17,5 +20,8 @@ export {
   MoreVertIcon,
   TimerOutlinedIcon,
   PlaylistAddOutlinedIcon,
-  RemoveDoneOutlinedIcon
+  RemoveDoneOutlinedIcon,
+  HistoryRoundedIcon,
+  HomeOutlinedIcon,
+  VideoLibraryOutlinedIcon
 };

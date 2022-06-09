@@ -1,10 +1,9 @@
-import { useVideo } from "../../../context/videos-context";
+import { useToolTips,useVideo } from "../../../context/index";
 import classNames from "classnames";
 import styles from "./VideoCardList.module.css";
-import { VideoCard } from "../VideoCard/VideoCard";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useToolTips } from "../../../context/toolTip-context";
+import { VideoCard } from "../../index";
+import { useState,useEffect } from "react";
+
 
 export const VideoCardList = () => {
   const { videos, searchVideosList } = useVideo();

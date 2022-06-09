@@ -1,5 +1,5 @@
 import React from 'react'
-import { VideoCardList } from '../../components/Card/VideoCardList/VideoCardList'
+import { VideoCardList } from '../../components/index'
 
 
 export const HomePage = () => {

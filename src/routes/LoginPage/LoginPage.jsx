@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
+import { useAuth } from "../../context/index";
 import styles from "./LoginPage.module.css";
 
 export const LoginPage = () => {

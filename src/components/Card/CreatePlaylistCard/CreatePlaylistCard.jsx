@@ -1,16 +1,21 @@
 import classNames from "classnames";
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useVideo } from "../../../context/videos-context";
+import { useState, useEffect } from "react";
+import { useVideo } from "../../../context/index";
 import { toast } from "react-toastify";
 import styles from "./CreatePlaylistCard.module.css";
-import createPlaylistService from "../../../services/PlaylistServices/createPlaylistService";
-import addVideoToPlaylistService from "../../../services/PlaylistServices/addVideoToPlaylistService";
-import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
+import {
+  deleteVideoFromPlaylistService,
+  addVideoToPlaylistService,
+  createPlaylistService,
+} from "../../../services/index";
 
 export const CreatePlaylistCard = ({ video }) => {
-  const { playlistCategories, setPlaylistCategories,setIsApiPending } = useVideo();
+  const {
+    playlistCategories,
+    setPlaylistCategories,
+    setIsApiPending,
+  } = useVideo();
   const [playlistName, setPlaylistName] = useState("");
 
   const inputHandler = (e) => {
@@ -30,7 +35,12 @@ export const CreatePlaylistCard = ({ video }) => {
 
   const addPlaylistCategoriesHandler = () => {
     if (!playlistCategories.some(isPlaylistNameExist)) {
-      createPlaylistService(playlistName, "", setPlaylistCategories,setIsApiPending);
+      createPlaylistService(
+        playlistName,
+        "",
+        setPlaylistCategories,
+        setIsApiPending
+      );
     } else {
       toast(`Playlist ${playlistName} already created `);
     }
@@ -46,9 +56,14 @@ export const CreatePlaylistCard = ({ video }) => {
         setPlaylistCategories,
         setIsApiPending
       );
-    }
-    else {
-        deleteVideoFromPlaylistService(playlistId,video._id,playlistCategories,setPlaylistCategories,setIsApiPending);
+    } else {
+      deleteVideoFromPlaylistService(
+        playlistId,
+        video._id,
+        playlistCategories,
+        setPlaylistCategories,
+        setIsApiPending
+      );
     }
   };
 
@@ -97,5 +112,3 @@ export const CreatePlaylistCard = ({ video }) => {
     </div>
   );
 };
-
-

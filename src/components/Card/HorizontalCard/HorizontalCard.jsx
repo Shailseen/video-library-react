@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./HorizontalCard.module.css";
-import { removeFromLiked } from "../../../services/LikeServices/removeFromLiked";
-import { useVideo } from "../../../context/videos-context";
+import {
+  removeFromWatchLater,
+  removeFromHistory,
+  removeFromLiked,
+  deleteVideoFromPlaylistService,
+} from "../../../services/index";
+import { useVideo } from "../../../context/index";
 import { useNavigate } from "react-router-dom";
-import { removeFromHistory } from "../../../services/HistoryServices/removeFromHistory";
-import { removeFromWatchLater } from "../../../services/WatchLaterServices/removeFromWatchLater";
-import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
-
-import UseAnimations from 'react-useanimations';
-import trash from 'react-useanimations/lib/trash'
+import UseAnimations from "react-useanimations";
+import trash from "react-useanimations/lib/trash";
 
 export function HorizontalCard({ cardData, type, playlistId }) {
   const {
@@ -17,7 +18,7 @@ export function HorizontalCard({ cardData, type, playlistId }) {
     setWatchLaterVideos,
     playlistCategories,
     setPlaylistCategories,
-    setIsApiPending
+    setIsApiPending,
   } = useVideo();
   const { _id, title, creator, thumbnail, videoYTId } = cardData;
   const navigate = useNavigate();
@@ -53,8 +54,7 @@ export function HorizontalCard({ cardData, type, playlistId }) {
         onClick={(event) => removeHandler(event)}
         className={styles.deleteIcon}
       >
-        <UseAnimations animation={trash} size={40}/>
-
+        <UseAnimations animation={trash} size={40} />
       </div>
     </div>
   );

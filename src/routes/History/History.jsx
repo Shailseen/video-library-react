@@ -1,8 +1,8 @@
 import React from "react";
 import {HorizontalCard, NavigationHome,NavigationLogin } from "../../components/index";
-import { useVideo } from "../../context/videos-context";
+import { useVideo } from "../../context/index";
 import styles from "./History.module.css";
-import { removeAllFromHistory } from "../../services/HistoryServices/removeAllFromHistory";
+import { removeAllFromHistory } from "../../services/index";
 import UseAnimations from 'react-useanimations';
 import trash from 'react-useanimations/lib/trash2'
 

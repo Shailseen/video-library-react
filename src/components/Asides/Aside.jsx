@@ -1,6 +1,4 @@
-import { useAside } from "../../context/aside-context";
-import { IconAside } from "./IconAside/IconAside";
-import { OpenAside } from "./OpenAside/OpenAside";
+import { OpenAside,IconAside } from "../index";
 
 export const Aside = () => {
   return (
