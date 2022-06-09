@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 import classNames from "classnames";
 import brandLogo from "../../assets/brandLogo/brandLogo.jpg";
 import { useAside } from "../../context/aside-context";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { useVideo } from "../../context/videos-context";
 import UseAnimations from "react-useanimations";
@@ -12,6 +12,8 @@ import { useState } from "react";
 import { useCallback } from "react";
 import debounce from "lodash.debounce";
 import { useEffect } from "react";
+import { style } from "@mui/system";
+
 
 
 export const Navbar = () => {
@@ -21,8 +23,9 @@ export const Navbar = () => {
   const encodedToken = localStorage.getItem("userToken");
   const [userQuery, setUserQuery] = useState("");
 
-
-  
+  let location = useLocation();
+  location = location.pathname;
+  console.log(location)
 
   useEffect(() => {
     if (videos) setSearchVideosList(videos);
@@ -76,7 +79,7 @@ export const Navbar = () => {
           <span className={classNames(styles.brand_text)}>dekho</span>
         </h1>
       </div>
-      <div className={styles.searchbar}>
+      <div className={classNames(styles.searchbar,location!=="/" && styles.hide_searchbox)}>
         <input
           type="text"
           placeholder="Search video here..."
@@ -84,7 +87,7 @@ export const Navbar = () => {
           value={userQuery}
         />
         <SearchIcon
-          sx={{ fontSize: "26px",color: "var(--primary-color)" ,margin: "auto 0rem"}}
+          sx={{ fontSize: "26px",color: "var(--primary-color)" ,margin: "auto"}}
           
         />
       </div>

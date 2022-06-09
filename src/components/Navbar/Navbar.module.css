@@ -84,3 +84,11 @@
       display: none;
   }
 }
+
+.show_searchbox{
+  display: block;
+}
+
+.hide_searchbox {
+  display: none;
+}
