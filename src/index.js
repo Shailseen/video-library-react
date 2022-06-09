@@ -22,6 +22,7 @@ import {
   AsideProvider,
   VideoProvider,
 } from "./context/index";
+import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 
 // Call make Server
 makeServer();
@@ -36,17 +37,52 @@ ReactDOM.render(
             <ToolTipsProvider>
               <Routes>
                 <Route path="/" element={<App />}>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/playlist" element={<PlayList />} />
-                  <Route path="/like" element={<LikedVideos />} />
-                  <Route path="/watchLater" element={<WatchLater />} />
-                  <Route path="/history" element={<History />} />
+                  <Route
+                    path="/"
+                    element={
+                      <RequireAuth>
+                        <HomePage />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/playlist"
+                    element={
+                      <RequireAuth>                        
+                        <PlayList />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/like"
+                    element={
+                      <RequireAuth>                        
+                        <LikedVideos />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/watchLater"
+                    element={
+                      <RequireAuth>                        
+                        <WatchLater />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/history"
+                    element={
+                      <RequireAuth>                        
+                        <History />
+                      </RequireAuth>
+                    }
+                  />
                   <Route path="/watch/:videoId" element={<VideoPlayer />} />
-                  <Route path="login" element={<LoginPage />} />
                   <Route
                     path="/playlistVideos/:playlistId"
                     element={<PlaylistVideos />}
                   />
+                  <Route path="login" element={<LoginPage />} />
                 </Route>
               </Routes>
             </ToolTipsProvider>
