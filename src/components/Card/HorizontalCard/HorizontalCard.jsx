@@ -32,7 +32,7 @@ export function HorizontalCard({ cardData, type, playlistId }) {
     if (type === "like") removeFromLiked(_id, setLikeVideos);
     else if (type === "history") removeFromHistory(_id, setHistoryVideos);
     else if (type === "watchLater")
-      removeFromWatchLater(_id, setWatchLaterVideos);
+      removeFromWatchLater(cardData, setWatchLaterVideos);
     else if (type === "playlist")
       deleteVideoFromPlaylistService(
         playlistId,

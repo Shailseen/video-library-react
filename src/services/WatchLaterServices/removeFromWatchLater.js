@@ -4,6 +4,7 @@ import { REMOVE_FROM_WATCH_LATER_API } from "../../utils/utils";
 
 export const removeFromWatchLater = async (card, setWatchLaterVideos) => {
   try {
+    console.log(card._id)
     const encodedToken = localStorage.getItem("userToken");
     const response = await axios.delete(
       REMOVE_FROM_WATCH_LATER_API + `/${card._id}`,
