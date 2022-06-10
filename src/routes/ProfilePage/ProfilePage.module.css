@@ -1,0 +1,31 @@
+.auth_btn {
+    padding: 0.8rem 3rem;
+    margin: auto;
+    width: 100%;
+}
+.auth_btn:hover {
+    opacity: 0.8;
+    background-color: var(--primary-color);
+}
+.container {
+    width: fit-content;
+    padding: 2rem;
+    margin: 6rem auto;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+.description {
+    display: flex;
+    align-items: center;
+}
+.first_p {
+    margin-bottom: 1rem;
+    font-size: large;
+    font-weight: bold;
+}
+.second_p {
+    margin-bottom: 1rem;
+    font-size: large;
+    color: grey;
+    margin-left: 0.5rem;
+}

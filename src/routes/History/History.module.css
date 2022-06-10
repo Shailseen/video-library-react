@@ -10,7 +10,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  margin: 1rem;
 }
 .header_container > span {
   cursor: pointer;

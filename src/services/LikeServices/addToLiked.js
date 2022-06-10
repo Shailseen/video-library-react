@@ -15,10 +15,10 @@ export const addToLiked = (data, setLikeVideos) => {
           },
         }
       );
-      toast("Liked Successfully!")
+      toast.success("Liked Successfully!")
       setLikeVideos((prev) => response.data.likes);
     } catch (error) {
-      toast("Could not like video!");
+      toast.error("Could not like video!");
     }
   })();
 };

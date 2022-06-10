@@ -15,11 +15,12 @@ export const addToWatchLater = async (data,setWatchLaterVideos) => {
                     authorization: encodedToken,
                 }
             })
-            toast("Video add to watch later successfully.");
+            data.isInWatchLater = true;
+            toast.success("Video add to watch later successfully.");
             setWatchLaterVideos(response.data.watchlater);
     } catch (error) {
         if(error.response.status===409)
-        toast("The video is already in your watch later videos.");
+        toast.error("The video is already in your watch later videos.");
         else
         toast("Could not add to watch later!");
     }

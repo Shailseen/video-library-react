@@ -1,19 +1,22 @@
 import styles from "./VideoCard.module.css";
 import classNames from "classnames";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
-import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import { toast } from "react-toastify";
-import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
-import RemoveDoneOutlinedIcon from "@mui/icons-material/RemoveDoneOutlined";
+import {
+  MoreVertIcon,
+  TimerOutlinedIcon,
+  WatchLaterOutlinedIcon,
+  PlaylistAddOutlinedIcon,
+  RemoveDoneOutlinedIcon,
+} from "../../../utils/materialUiIcons";
 import { NavLink } from "react-router-dom";
-import { useToolTips } from "../../../context/toolTip-context";
-import { useVideo } from "../../../context/videos-context";
-import { addToHistory } from "../../../services/HistoryServices/addToHistory.js";
-import { addToWatchLater } from "../../../services/WatchLaterServices/addToWatchLater";
-import Modal from "../../Modal/Modal";
+import { useToolTips, useVideo } from "../../../context/index";
+import {
+  addToWatchLater,
+  addToHistory,
+  removeFromWatchLater,
+} from "../../../services/index";
 import { useState } from "react";
-import CreatePlaylistCard from "../CreatePlaylistCard/CreatePlaylistCard";
+import { CreatePlaylistCard, Modal } from "../../index";
 
 export const VideoCard = ({ card, toolTip }) => {
   const {
@@ -24,6 +27,7 @@ export const VideoCard = ({ card, toolTip }) => {
     thumbnail,
     views,
     timeStamp,
+    uploadAt,
     isInWatchLater,
     videoYTId,
   } = card;
@@ -47,7 +51,7 @@ export const VideoCard = ({ card, toolTip }) => {
 
   const modalHandler = () => {
     if (encodedToken) setIsOpen(true);
-    else toast("You need to login first for use playlist!");
+    else toast.warn("You need to login first for use playlist!");
   };
 
   const addToHistoryHandler = () => {
@@ -55,9 +59,13 @@ export const VideoCard = ({ card, toolTip }) => {
   };
 
   const watchLaterHandler = () => {
-    if (encodedToken) addToWatchLater(card, setWatchLaterVideos);
-    else toast("You have to login first.");
+    if (encodedToken) {
+      isInWatchLater === false
+        ? addToWatchLater(card, setWatchLaterVideos)
+        : removeFromWatchLater(card, setWatchLaterVideos);
+    } else toast.warn("You have to login first.");
   };
+
   return (
     <div key={_id} className={classNames(styles.card_container)}>
       <NavLink
@@ -89,7 +97,9 @@ export const VideoCard = ({ card, toolTip }) => {
               <small>{creator}</small>
             </p>
             <div className={classNames(styles.view)}>
-              <p>{views}</p>
+              <p>
+                {views} views • {uploadAt}
+              </p>
             </div>
           </div>
         </div>
@@ -115,10 +125,13 @@ export const VideoCard = ({ card, toolTip }) => {
                   <WatchLaterOutlinedIcon /> <p>Add to Watch Later</p>
                 </div>
               ) : (
-                <>
+                <div
+                  onClick={watchLaterHandler}
+                  className={styles.flex_container}
+                >
                   {" "}
                   <RemoveDoneOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
-                </>
+                </div>
               )}
             </div>
             <div

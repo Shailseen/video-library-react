@@ -1,16 +1,21 @@
 import classNames from "classnames";
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useVideo } from "../../../context/videos-context";
+import { useState, useEffect } from "react";
+import { useVideo } from "../../../context/index";
 import { toast } from "react-toastify";
 import styles from "./CreatePlaylistCard.module.css";
-import createPlaylistService from "../../../services/PlaylistServices/createPlaylistService";
-import addVideoToPlaylistService from "../../../services/PlaylistServices/addVideoToPlaylistService";
-import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
+import {
+  deleteVideoFromPlaylistService,
+  addVideoToPlaylistService,
+  createPlaylistService,
+} from "../../../services/index";
 
-const CreatePlaylistCard = ({ video }) => {
-  const { playlistCategories, setPlaylistCategories } = useVideo();
+export const CreatePlaylistCard = ({ video }) => {
+  const {
+    playlistCategories,
+    setPlaylistCategories,
+    setIsApiPending,
+  } = useVideo();
   const [playlistName, setPlaylistName] = useState("");
 
   const inputHandler = (e) => {
@@ -30,9 +35,14 @@ const CreatePlaylistCard = ({ video }) => {
 
   const addPlaylistCategoriesHandler = () => {
     if (!playlistCategories.some(isPlaylistNameExist)) {
-      createPlaylistService(playlistName, "", setPlaylistCategories);
+      createPlaylistService(
+        playlistName,
+        "",
+        setPlaylistCategories,
+        setIsApiPending
+      );
     } else {
-      toast(`Playlist ${playlistName} already created `);
+      toast.info(`Playlist ${playlistName} already created `);
     }
     setPlaylistName("");
   };
@@ -43,17 +53,21 @@ const CreatePlaylistCard = ({ video }) => {
         playlistId,
         video,
         playlistCategories,
-        setPlaylistCategories
+        setPlaylistCategories,
+        setIsApiPending
       );
-    }
-    else {
-        deleteVideoFromPlaylistService(playlistId,video._id,playlistCategories,setPlaylistCategories);
+    } else {
+      deleteVideoFromPlaylistService(
+        playlistId,
+        video._id,
+        playlistCategories,
+        setPlaylistCategories,
+        setIsApiPending
+      );
     }
   };
 
-  useEffect(() => {
-    console.log(playlistCategories);
-  }, [playlistCategories]);
+
 
   return (
     <div className={styles.container}>
@@ -96,5 +110,3 @@ const CreatePlaylistCard = ({ video }) => {
     </div>
   );
 };
-
-export default CreatePlaylistCard;

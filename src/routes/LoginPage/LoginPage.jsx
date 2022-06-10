@@ -1,22 +1,35 @@
 import classNames from "classnames";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/index";
 import styles from "./LoginPage.module.css";
 
 export const LoginPage = () => {
-  const { getLogin } = useAuth();
+  const { getLogin, isToken } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const emailHandler = (event) => {
     setEmail((prev) => event.target.value);
   };
+
   const passwordHandler = (event) => {
     setPassword((prev) => event.target.value);
   };
+
   const guestLoginHandler = () => {
     getLogin("shailesh@gmail.com", "Shailesh123");
   };
+
+  useEffect(() => {
+    if (isToken) {
+      navigate(from, { replace: true });
+    }
+  }, [isToken]);
+
   return (
     <>
       <div className={styles.login_container}>
@@ -62,7 +75,7 @@ export const LoginPage = () => {
         </div>
         <div className={styles.signup}>
           <label>Not a member? </label>
-          <Link className={styles.signup_link} to="/">
+          <Link className={styles.signup_link} to="/signup">
             Register
           </Link>
         </div>

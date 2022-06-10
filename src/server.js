@@ -38,6 +38,7 @@ import {
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import { updateCountToViewedVideos } from "./backend/controllers/CountVideoController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -131,6 +132,8 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
+      this.post("/count/video", updateCountToViewedVideos.bind(this));
     },
   });
 }

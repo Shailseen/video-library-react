@@ -11,7 +11,7 @@ const getPlaylistVideosService = async (playlistId, setPlaylistVideos) => {
     });
     setPlaylistVideos(prev => res.data.playlist);
   } catch (error) {
-      toast("Can't load video !");
+      toast.error("Can't load video !");
   }
 };
 

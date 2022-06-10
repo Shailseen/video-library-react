@@ -47,3 +47,23 @@
         width: 100%;
     }
 }
+
+.results {
+    color: #808080;
+    margin-bottom: 0.5rem;
+}
+.sort_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0rem;
+    justify-content: flex-end;
+}
+.sort_container > p{
+    color: var(--primary-color);
+    font-size: large;
+}
+.btn:hover{
+    background-color: var(--primary-color);
+    opacity: 0.8;
+}

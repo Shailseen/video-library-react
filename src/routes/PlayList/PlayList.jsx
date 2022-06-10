@@ -1,8 +1,6 @@
 import React from "react";
-import PlaylistTitleCard from "../../components/Card/PlaylistTitleCard/PlaylistTitleCard";
-import { NavigationHome } from "../../components/Navigation/NavigationHome/NavigationHome";
-import { NavigationLogin } from "../../components/Navigation/NavigationLogin/NavigationLogin";
-import { useVideo } from "../../context/videos-context";
+import {NavigationLogin,PlaylistTitleCard, NavigationHome } from "../../components/index";
+import { useVideo } from "../../context/index";
 import styles from "./Playlist.module.css";
 
 export default function PlayList() {

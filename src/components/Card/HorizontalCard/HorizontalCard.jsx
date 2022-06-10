@@ -1,20 +1,24 @@
 import React from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "./HorizontalCard.module.css";
-import { removeFromLiked } from "../../../services/LikeServices/removeFromLiked";
-import { useVideo } from "../../../context/videos-context";
+import {
+  removeFromWatchLater,
+  removeFromHistory,
+  removeFromLiked,
+  deleteVideoFromPlaylistService,
+} from "../../../services/index";
+import { useVideo } from "../../../context/index";
 import { useNavigate } from "react-router-dom";
-import { removeFromHistory } from "../../../services/HistoryServices/removeFromHistory";
-import { removeFromWatchLater } from "../../../services/WatchLaterServices/removeFromWatchLater";
-import deleteVideoFromPlaylistService from "../../../services/PlaylistServices/deleteVideoFromPlaylistService";
+import { DeleteIcon } from "../../../utils/materialUiIcons";
 
-export default function HorizontalCard({ cardData, type, playlistId }) {
+
+export function HorizontalCard({ cardData, type, playlistId }) {
   const {
     setLikeVideos,
     setHistoryVideos,
     setWatchLaterVideos,
     playlistCategories,
     setPlaylistCategories,
+    setIsApiPending,
   } = useVideo();
   const { _id, title, creator, thumbnail, videoYTId } = cardData;
   const navigate = useNavigate();
@@ -28,13 +32,14 @@ export default function HorizontalCard({ cardData, type, playlistId }) {
     if (type === "like") removeFromLiked(_id, setLikeVideos);
     else if (type === "history") removeFromHistory(_id, setHistoryVideos);
     else if (type === "watchLater")
-      removeFromWatchLater(_id, setWatchLaterVideos);
+      removeFromWatchLater(cardData, setWatchLaterVideos);
     else if (type === "playlist")
       deleteVideoFromPlaylistService(
         playlistId,
         _id,
         playlistCategories,
-        setPlaylistCategories
+        setPlaylistCategories,
+        setIsApiPending
       );
   };
 
@@ -49,7 +54,7 @@ export default function HorizontalCard({ cardData, type, playlistId }) {
         onClick={(event) => removeHandler(event)}
         className={styles.deleteIcon}
       >
-        <DeleteIcon sx={{ fontSize: "35px" }} />
+        <DeleteIcon sx={{fontSize: "35px"}}/>
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const createPlaylistService = async (title, description,setPlaylistCategories) => {
+const createPlaylistService = async (
+  title,
+  description,
+  setPlaylistCategories,
+  setIsApiPending
+) => {
   try {
+    setIsApiPending(true);
     const encodedToken = localStorage.getItem("userToken");
     const res = await axios.post(
       "/api/user/playlists",
@@ -18,10 +24,12 @@ const createPlaylistService = async (title, description,setPlaylistCategories) =
         },
       }
     );
-    toast("Create playlist successfully!");
-    setPlaylistCategories(prev => res.data.playlists)
+    setIsApiPending(false);
+    toast.success("Create playlist successfully!");
+    setPlaylistCategories((prev) => res.data.playlists);
   } catch (error) {
-    toast("Create playlist failed!");
+    setIsApiPending(false);
+    toast.error("Create playlist failed!");
   }
 };
 

@@ -10,9 +10,9 @@ export const removeFromLiked = async (_id, setLikeVideos) => {
         authorization: encodedToken,
       },
     });
-    toast("Video removed from like successfully!");
+    toast.success("Video removed from like successfully!");
     setLikeVideos(response.data.likes);
   } catch (error) {
-    toast("Video could not dislike!");
+    toast.error("Video could not dislike!");
   }
 };
