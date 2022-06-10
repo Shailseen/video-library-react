@@ -10,6 +10,8 @@ import RemoveDoneOutlinedIcon from '@mui/icons-material/RemoveDoneOutlined';
 import HistoryRoundedIcon from "@mui/icons-material/HistoryRounded"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined"
+import PersonIcon from '@mui/icons-material/Person';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 
 export {
   ThumbUpOutlinedIcon,
@@ -23,5 +25,7 @@ export {
   RemoveDoneOutlinedIcon,
   HistoryRoundedIcon,
   HomeOutlinedIcon,
-  VideoLibraryOutlinedIcon
+  VideoLibraryOutlinedIcon,
+  PersonIcon,
+  PermIdentityOutlinedIcon
 };

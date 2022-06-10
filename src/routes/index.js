@@ -7,6 +7,7 @@ import PlaylistVideos from "./PlaylistVideos/PlaylistVideos";
 import { VideoPlayer } from "./VideoPlayer/VideoPlayer";
 import WatchLater from "./WatchLater/WatchLater";
 import { SignUp } from "./SignUp/SignUp";
+import { ProfilePage } from "./ProfilePage/ProfilePage";
 
 export {
   History,
@@ -17,5 +18,6 @@ export {
   PlaylistVideos,
   VideoPlayer,
   WatchLater,
-  SignUp
+  SignUp,
+  ProfilePage
 };

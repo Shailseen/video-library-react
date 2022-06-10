@@ -95,3 +95,16 @@
 .header_container_navbar {
   text-decoration: none;
 }
+.flexcol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flexcol:hover {
+  color: var(--primary-color);
+}
+.link {
+  color: #000000;
+  text-decoration: none;
+}

@@ -8,10 +8,11 @@ import menu3 from "react-useanimations/lib/menu2";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect,useCallback,useState } from "react";
 import debounce from "lodash.debounce";
+import { PermIdentityOutlinedIcon, PersonIcon } from "../../utils/materialUiIcons";
 
 export const Navbar = () => {
   const { setAside, aside } = useAside();
-  const { logoutHandler } = useAuth();
+  const { user } = useAuth();
   const { videos, setSearchVideosList, setIsApiPending } = useVideo();
   const encodedToken = localStorage.getItem("userToken");
   const [userQuery, setUserQuery] = useState("");
@@ -84,26 +85,19 @@ export const Navbar = () => {
         />
       </div>
       {!encodedToken ? (
-        <Link to="/login">
-          <button
-            className={classNames(
-              "button-style-none outline-button",
-              styles.auth_btn
-            )}
-          >
-            Log In
-          </button>
+        <Link to="/login" className={styles.link}>
+          <div className={styles.flexcol}>
+            <PermIdentityOutlinedIcon sx={{fontSize: "40px"}}/>
+            <p>Login</p>
+          </div>
         </Link>
       ) : (
-        <button
-          onClick={() => logoutHandler()}
-          className={classNames(
-            "button-style-none outline-button",
-            styles.auth_btn
-          )}
-        >
-          Logout
-        </button>
+        <Link to="/profile" className={styles.link}>
+          <div className={styles.flexcol}>
+            <PersonIcon  sx={{fontSize: "40px"}}/>
+            <p>Hi! {user && user.firstName}</p>
+          </div>
+        </Link>
       )}
     </div>
   );

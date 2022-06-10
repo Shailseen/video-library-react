@@ -24,9 +24,10 @@ export const VideoPlayer = () => {
     videos,
     likeVideos,
     setLikeVideos,
-    setWatchLaterVideos,
     setVideos,
+    setVideoWatchedCount,
   } = useVideo();
+
   const [data, setData] = useState("");
   const {
     _id,
@@ -49,30 +50,29 @@ export const VideoPlayer = () => {
   };
 
   useEffect(() => {
-    if(!data) {
-    const videoData = videos.find(item => item._id === videoId);
-    setData(videoData);
-  }
-
+    if (!data) {
+      const videoData = videos.find((item) => item._id === videoId);
+      setData(videoData);
+    }
   }, [videos]);
 
   useEffect(() => {
-    if(data) {
-    (async function() {
-      try {
-        const response = await axios.post(`/api/count/video`,
-        {
-          videosData: data,
-          allVideos: videos
-        });
-        setVideos(prev => response.data.updatedVideos);
-        console.log(response)
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }
-  },[data])
+    if (data) {
+      setVideoWatchedCount(prevCount => prevCount +1);
+      (async function() {
+        try {
+          const response = await axios.post(`/api/count/video`, {
+            videosData: data,
+            allVideos: videos,
+          });
+          setVideos((prev) => response.data.updatedVideos);
+          console.log(response);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, [data]);
 
   useEffect(() => {
     const tempVideosArr = JSON.parse(JSON.stringify(videos));
@@ -102,7 +102,7 @@ export const VideoPlayer = () => {
       />
       <p className={classNames(styles.title)}>{title}</p>
       <p className={styles.views_date}>
-        {views+1} views • {uploadAt}
+        {views + 1} views • {uploadAt}
       </p>
       <div className={classNames(styles.channel_logo_container)}>
         {creatorLogo && (

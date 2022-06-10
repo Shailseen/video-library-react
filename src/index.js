@@ -15,7 +15,8 @@ import {
   PlaylistVideos,
   VideoPlayer,
   WatchLater,
-  SignUp
+  SignUp,
+  ProfilePage,
 } from "./routes/index";
 import {
   ToolTipsProvider,
@@ -24,7 +25,6 @@ import {
   VideoProvider,
 } from "./context/index";
 import { RequireAuth } from "./components/RequireAuth/RequireAuth";
-
 
 // Call make Server
 makeServer();
@@ -39,18 +39,11 @@ ReactDOM.render(
             <ToolTipsProvider>
               <Routes>
                 <Route path="/" element={<App />}>
-                  <Route
-                    path="/"
-                    element={
-                      <RequireAuth>
-                        <HomePage />
-                      </RequireAuth>
-                    }
-                  />
+                  <Route path="/" element={<HomePage />} />
                   <Route
                     path="/playlist"
                     element={
-                      <RequireAuth>                        
+                      <RequireAuth>
                         <PlayList />
                       </RequireAuth>
                     }
@@ -58,7 +51,7 @@ ReactDOM.render(
                   <Route
                     path="/like"
                     element={
-                      <RequireAuth>                        
+                      <RequireAuth>
                         <LikedVideos />
                       </RequireAuth>
                     }
@@ -66,7 +59,7 @@ ReactDOM.render(
                   <Route
                     path="/watchLater"
                     element={
-                      <RequireAuth>                        
+                      <RequireAuth>
                         <WatchLater />
                       </RequireAuth>
                     }
@@ -74,8 +67,16 @@ ReactDOM.render(
                   <Route
                     path="/history"
                     element={
-                      <RequireAuth>                        
+                      <RequireAuth>
                         <History />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/profile"
+                    element={
+                      <RequireAuth>
+                        <ProfilePage />
                       </RequireAuth>
                     }
                   />
@@ -85,7 +86,7 @@ ReactDOM.render(
                     element={<PlaylistVideos />}
                   />
                   <Route path="login" element={<LoginPage />} />
-                  <Route path="signup" element={<SignUp/>}/>
+                  <Route path="signup" element={<SignUp />} />
                 </Route>
               </Routes>
             </ToolTipsProvider>
