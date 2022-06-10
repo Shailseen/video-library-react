@@ -12,6 +12,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined"
 import PersonIcon from '@mui/icons-material/Person';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export {
   ThumbUpOutlinedIcon,
@@ -27,5 +29,7 @@ export {
   HomeOutlinedIcon,
   VideoLibraryOutlinedIcon,
   PersonIcon,
-  PermIdentityOutlinedIcon
+  PermIdentityOutlinedIcon,
+  DeleteIcon,
+  MenuIcon
 };

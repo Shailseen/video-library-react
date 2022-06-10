@@ -94,6 +94,7 @@
 }
 .header_container_navbar {
   text-decoration: none;
+  color: black;
 }
 .flexcol {
   display: flex;

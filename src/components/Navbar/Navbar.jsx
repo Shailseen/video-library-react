@@ -1,14 +1,16 @@
 import styles from "./Navbar.module.css";
 import classNames from "classnames";
 import brandLogo from "../../assets/brandLogo/brandLogo.jpg";
-import { useAuth,useAside,useVideo } from "../../context/index";
+import { useAuth, useAside, useVideo } from "../../context/index";
 import { Link, useLocation } from "react-router-dom";
-import UseAnimations from "react-useanimations";
-import menu3 from "react-useanimations/lib/menu2";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect,useCallback,useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import debounce from "lodash.debounce";
-import { PermIdentityOutlinedIcon, PersonIcon } from "../../utils/materialUiIcons";
+import {
+  MenuIcon,
+  PermIdentityOutlinedIcon,
+  PersonIcon,
+} from "../../utils/materialUiIcons";
 
 export const Navbar = () => {
   const { setAside, aside } = useAside();
@@ -58,12 +60,7 @@ export const Navbar = () => {
     <div className={classNames(styles.navbarContainer)}>
       <Link to="/" className={classNames(styles.header_container_navbar)}>
         <h1 className={classNames(styles.mg_lt, styles.flex)}>
-          <UseAnimations
-            animation={menu3}
-            onClick={hamburgerHandler}
-            className={classNames(styles.hamburger_icon)}
-            size={40}
-          />
+          <MenuIcon onClick={hamburgerHandler} sx={{ fontSize: "35px" }} />
           <img
             className={classNames(styles.brand_logo)}
             src={brandLogo}
@@ -72,7 +69,12 @@ export const Navbar = () => {
           <span className={classNames(styles.brand_text)}>dekho</span>
         </h1>
       </Link>
-      <div className={classNames(styles.searchbar,location!=="/" && styles.hide_searchbox)}>
+      <div
+        className={classNames(
+          styles.searchbar,
+          location !== "/" && styles.hide_searchbox
+        )}
+      >
         <input
           type="text"
           placeholder="Search video here..."
@@ -80,21 +82,24 @@ export const Navbar = () => {
           value={userQuery}
         />
         <SearchIcon
-          sx={{ fontSize: "26px",color: "var(--primary-color)" ,margin: "auto"}}
-          
+          sx={{
+            fontSize: "26px",
+            color: "var(--primary-color)",
+            margin: "auto",
+          }}
         />
       </div>
       {!encodedToken ? (
         <Link to="/login" className={styles.link}>
           <div className={styles.flexcol}>
-            <PermIdentityOutlinedIcon sx={{fontSize: "40px"}}/>
+            <PermIdentityOutlinedIcon sx={{ fontSize: "40px" }} />
             <p>Login</p>
           </div>
         </Link>
       ) : (
         <Link to="/profile" className={styles.link}>
           <div className={styles.flexcol}>
-            <PersonIcon  sx={{fontSize: "40px"}}/>
+            <PersonIcon sx={{ fontSize: "40px" }} />
             <p>Hi! {user && user.firstName}</p>
           </div>
         </Link>

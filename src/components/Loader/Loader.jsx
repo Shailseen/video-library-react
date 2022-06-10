@@ -1,9 +1,8 @@
 import React from 'react'
-import UseAnimations from 'react-useanimations';
-import loading2 from 'react-useanimations/lib/loading2'
+import styles from "./Loader.module.css"
 export const Loader = () => {
   return (
-    <UseAnimations animation={loading2} size={80} fillColor='var(--primary-color)' /> 
+    <span className={styles.loader}></span>
   )
 }
 

@@ -8,8 +8,8 @@ import {
 } from "../../../services/index";
 import { useVideo } from "../../../context/index";
 import { useNavigate } from "react-router-dom";
-import UseAnimations from "react-useanimations";
-import trash from "react-useanimations/lib/trash";
+import { DeleteIcon } from "../../../utils/materialUiIcons";
+
 
 export function HorizontalCard({ cardData, type, playlistId }) {
   const {
@@ -54,7 +54,7 @@ export function HorizontalCard({ cardData, type, playlistId }) {
         onClick={(event) => removeHandler(event)}
         className={styles.deleteIcon}
       >
-        <UseAnimations animation={trash} size={40} />
+        <DeleteIcon sx={{fontSize: "35px"}}/>
       </div>
     </div>
   );
