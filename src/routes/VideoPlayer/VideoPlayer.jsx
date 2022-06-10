@@ -20,7 +20,13 @@ import {
 
 export const VideoPlayer = () => {
   const { videoId } = useParams();
-  const { videos, likeVideos, setLikeVideos, setWatchLaterVideos } = useVideo();
+  const {
+    videos,
+    likeVideos,
+    setLikeVideos,
+    setWatchLaterVideos,
+    setVideos,
+  } = useVideo();
   const [data, setData] = useState("");
   const {
     _id,
@@ -41,21 +47,42 @@ export const VideoPlayer = () => {
   const playlistModalHandler = () => {
     encodedToken ? setIsOpen(true) : toast("You have to login first!");
   };
+
   useEffect(() => {
+    if(!data) {
+    const videoData = videos.find(item => item._id === videoId);
+    setData(videoData);
+  }
+
+  }, [videos]);
+
+  useEffect(() => {
+    if(data) {
     (async function() {
       try {
-        const response = await axios.get(`/api/video/${videoId}`);
-        setData(response.data.video);
+        const response = await axios.post(`/api/count/video`,
+        {
+          videosData: data,
+          allVideos: videos
+        });
+        setVideos(prev => response.data.updatedVideos);
+        console.log(response)
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [videos]);
+  }
+  },[data])
 
-  const watchLaterHandler = () => {
-    if (encodedToken) addToWatchLater(data, setWatchLaterVideos);
-    else toast.warn("You have to login first.");
-  };
+  useEffect(() => {
+    const tempVideosArr = JSON.parse(JSON.stringify(videos));
+
+    setVideos(
+      tempVideosArr.map((video) =>
+        video._id === _id ? { ...video, views: video.views + 1 } : video
+      )
+    );
+  }, []);
 
   const handleLike = () => {
     if (encodedToken !== null) {
@@ -74,7 +101,9 @@ export const VideoPlayer = () => {
         url={`https://www.youtube.com/watch?v=${videoId}`}
       />
       <p className={classNames(styles.title)}>{title}</p>
-      <p className={styles.views_date}>{views} • {uploadAt}</p>
+      <p className={styles.views_date}>
+        {views+1} views • {uploadAt}
+      </p>
       <div className={classNames(styles.channel_logo_container)}>
         {creatorLogo && (
           <img

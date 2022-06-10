@@ -13,11 +13,13 @@ const ToolTipsProvider = ({ children }) => {
     const { videos } = useVideo();
                          
   useEffect(() => {
+    if(videos){
     let tempToggle = [];
     for (const element of videos) {
       tempToggle = [...tempToggle, { id: element._id, isToolTip: false }];
     }
     setToolTip(tempToggle);
+  }
   }, [videos]);
 
   const toggleHandler = (e_id) => {

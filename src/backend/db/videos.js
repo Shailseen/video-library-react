@@ -15,7 +15,7 @@ export const videos = [
       altText: "Top 5 Reasons To Consider Tata Punch Thumbnail",
       url: "https://i.ytimg.com/vi/OQX5P2QyreQ/hqdefault.jpg",
     },
-    views: "1.3M views",
+    views: 4,
     timeStamp: "8:24",
     title: "Top 5 Reasons To Consider Tata Punch⚡Reasons To Buy & Not To Buy",
     description:
@@ -32,7 +32,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/qBhG9mOKl4K0C_9_lTw2dJ6_DuQ88IwxRiFQ-pLeptQK_NqDDOt-SpwcwslyJV-qVn1qWg1x=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "3,664,700 views",
+    views: 5,
     timeStamp: "17:25",
     isInWatchLater: false,
     isLiked: false,
@@ -57,7 +57,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/lN_c8XvZeRhVDSOl3_smOORyYCpOSc5FLjZ8mFPxjTUG0kaW_v6DdjDLDZNWDYdpcUPbWugACA=s176-c-k-c0x00ffffff-no-rj",
     },
-    views: "2,015,384 views",
+    views: 2,
     timeStamp: "8:51",
     isInWatchLater: false,
     isLiked: false,
@@ -80,7 +80,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLRNi36JqZU3OkAalIno84bjbBwKS0png-Yhu4z-pA=s176-c-k-c0x00ffffff-no-rj-mo",
     },
-    views: "1,069,208 views",
+    views: 5,
     timeStamp: "17:07",
     isInWatchLater: false,
     isLiked: false,
@@ -104,7 +104,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLRE2OS5Fw7ilN_akxlHQtf6-H6zjmXGuTl2B7jTDg=s176-c-k-c0x00ffffff-no-rj-mo",
     },
-    views: "1,021,922 views",
+    views: 7,
     timeStamp: "15:44",
     isInWatchLater: false,
     isLiked: false,
@@ -129,7 +129,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLRbI-xI_kQi685P7v3pfPbsAQ3qQ9JMakERpbzDgQ=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "2,495,221 views",
+    views: 10,
     timeStamp: "8:49",
     isInWatchLater: false,
     isLiked: false,
@@ -153,7 +153,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/Tu5e4QZQM1SrWBqyDrx7m9duC3H_htsKsiaH-xMBx9qfLdVwIh0ZcZf3xgZUhBbrotCFvGoXdMI=s176-c-k-c0x00ffffff-no-rj-mo",
     },
-    views: "613,525 views",
+    views: 12,
     timeStamp: "21:47",
     isInWatchLater: false,
     isLiked: false,
@@ -178,7 +178,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLRNi36JqZU3OkAalIno84bjbBwKS0png-Yhu4z-pA=s176-c-k-c0x00ffffff-no-rj-mo",
     },
-    views: "602,350 views",
+    views: 35,
     timeStamp: "13:23",
     isInWatchLater: false,
     isLiked: false,
@@ -202,7 +202,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLRbI-xI_kQi685P7v3pfPbsAQ3qQ9JMakERpbzDgQ=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "156,562 views",
+    views: 0,
     timeStamp: "9:43",
     isInWatchLater: false,
     isLiked: false,
@@ -225,7 +225,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/wRbBEhIIcTusDTBU6sPGtZz3sIDlvdEebHx2NFIATaPf0EUB7AFc6UWOxiyJWT0BUxyGNGdYjIs=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "101,628 views",
+    views: 65,
     timeStamp: "12:23",
     isInWatchLater: false,
     isLiked: false,
@@ -249,7 +249,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLTqy3rLjQNu4woNxuuOFndNfW86sC5-9VDgGgzgwA=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "5,888,731 views",
+    views: 23,
     timeStamp: "9:38",
     isInWatchLater: false,
     isLiked: false,
@@ -272,7 +272,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLT414Pb-IeZF1qtc8TTsnUbZm1PCoaMp1s_ach75w=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "17,394 views",
+    views: 76,
     timeStamp: "2:02",
     isInWatchLater: false,
     isLiked: false,
@@ -295,7 +295,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLSIaj9pMiCRekpA3SdvbN2g6Zy0EOdu3L6DshT6NTQ=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "514,607 views",
+    views: 1000,
     timeStamp: "2:30",
     isInWatchLater: false,
     isLiked: false,
@@ -319,7 +319,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/lN_c8XvZeRhVDSOl3_smOORyYCpOSc5FLjZ8mFPxjTUG0kaW_v6DdjDLDZNWDYdpcUPbWugACA=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "1,246,519 views",
+    views: 922,
     timeStamp: "17:17",
     isInWatchLater: false,
     isLiked: false,
@@ -343,7 +343,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/ytc/AKedOLQHjeIxLhS99NEyNHzoZz5-C1L_p5CSp7sj9d1p3A=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "498,345 views",
+    views: 234,
     timeStamp: "12:53",
     isInWatchLater: false,
     isLiked: false,
@@ -366,7 +366,7 @@ export const videos = [
       url:
         "https://yt3.ggpht.com/GYG29TyIFvp_tN3qC25IlGet3zW0nGPB0kvfr3uYXBl8FdUwDlCqXr5cL72L4Iaf6CYH8i0Q8g=s88-c-k-c0x00ffffff-no-rj",
     },
-    views: "1,519,926 views",
+    views: 654,
     timeStamp: "15:21",
     isInWatchLater: false,
     isLiked: false,

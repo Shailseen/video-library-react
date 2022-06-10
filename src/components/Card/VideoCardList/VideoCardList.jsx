@@ -60,7 +60,7 @@ export const VideoCardList = () => {
     const operation = (list1, list2, isUnion = false) =>
       list1.filter(
         ((set) => (a) => isUnion === set.has(a.videoYTId))(
-          new Set(list2.map((b) => b.videoYTId))
+          new Set(list2?.map((b) => b.videoYTId))
         )
       );
 

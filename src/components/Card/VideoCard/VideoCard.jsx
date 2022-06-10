@@ -27,6 +27,7 @@ export const VideoCard = ({ card, toolTip }) => {
     thumbnail,
     views,
     timeStamp,
+    uploadAt,
     isInWatchLater,
     videoYTId,
   } = card;
@@ -59,7 +60,7 @@ export const VideoCard = ({ card, toolTip }) => {
 
   const watchLaterHandler = () => {
     if (encodedToken) {
-      isInWatchLater===false
+      isInWatchLater === false
         ? addToWatchLater(card, setWatchLaterVideos)
         : removeFromWatchLater(card, setWatchLaterVideos);
     } else toast.warn("You have to login first.");
@@ -96,7 +97,9 @@ export const VideoCard = ({ card, toolTip }) => {
               <small>{creator}</small>
             </p>
             <div className={classNames(styles.view)}>
-              <p>{views}</p>
+              <p>
+                {views} views • {uploadAt}
+              </p>
             </div>
           </div>
         </div>
@@ -123,8 +126,9 @@ export const VideoCard = ({ card, toolTip }) => {
                 </div>
               ) : (
                 <div
-                onClick={watchLaterHandler}
-                className={styles.flex_container}>
+                  onClick={watchLaterHandler}
+                  className={styles.flex_container}
+                >
                   {" "}
                   <RemoveDoneOutlinedIcon /> <p>Remove from Watch Later</p>{" "}
                 </div>
