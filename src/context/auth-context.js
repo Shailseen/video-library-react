@@ -30,12 +30,36 @@ const AuthProvider = ({ children }) => {
       setIsApiPending(false);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
-      toast.success("Login Successfully! ");
+      console.log(response)
+      toast.success(`Login Successfully, Welcome ${response.data.foundUser.firstName}`);
       navigate("/");
     } catch (error) {
+      setIsApiPending(false)
       toast.error("Login failed!")
     }
   };
+
+  const getSignUp = async ({firstName,lastName,email,password}) => {
+    try {
+      console.log("insignup");
+      setIsApiPending(true)
+      const response = await axios.post("/api/auth/signup",{
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      });
+      setIsApiPending(false);
+      toast.success(`Signup succesfully, Welcome ${firstName}!`);
+      localStorage.setItem("userToken", response.data.encodedToken);
+      setIsToken(response.data.encodedToken);
+      navigate("/");
+    } catch (error) {
+      setIsApiPending(false)
+      error.response.status === 422 ? toast.info("Email already exist!") : 
+      toast.error(`Signup failed, try again ${firstName}`);
+    }
+  }
 
   const logoutHandler = () => {
     localStorage.clear();
@@ -43,7 +67,7 @@ const AuthProvider = ({ children }) => {
     toast.success("Logout Successfully!");
   };
   return (
-    <AuthContext.Provider value={{ getLogin, logoutHandler, isToken }}>
+    <AuthContext.Provider value={{ getLogin, logoutHandler, isToken, getSignUp }}>
       {children}
     </AuthContext.Provider>
   );

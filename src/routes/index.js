@@ -6,6 +6,7 @@ import PlayList from "./PlayList/PlayList";
 import PlaylistVideos from "./PlaylistVideos/PlaylistVideos";
 import { VideoPlayer } from "./VideoPlayer/VideoPlayer";
 import WatchLater from "./WatchLater/WatchLater";
+import { SignUp } from "./SignUp/SignUp";
 
 export {
   History,
@@ -16,4 +17,5 @@ export {
   PlaylistVideos,
   VideoPlayer,
   WatchLater,
+  SignUp
 };

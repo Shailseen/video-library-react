@@ -75,7 +75,7 @@ export const LoginPage = () => {
         </div>
         <div className={styles.signup}>
           <label>Not a member? </label>
-          <Link className={styles.signup_link} to="/">
+          <Link className={styles.signup_link} to="/signup">
             Register
           </Link>
         </div>

@@ -15,6 +15,7 @@ import {
   PlaylistVideos,
   VideoPlayer,
   WatchLater,
+  SignUp
 } from "./routes/index";
 import {
   ToolTipsProvider,
@@ -23,6 +24,7 @@ import {
   VideoProvider,
 } from "./context/index";
 import { RequireAuth } from "./components/RequireAuth/RequireAuth";
+
 
 // Call make Server
 makeServer();
@@ -83,6 +85,7 @@ ReactDOM.render(
                     element={<PlaylistVideos />}
                   />
                   <Route path="login" element={<LoginPage />} />
+                  <Route path="signup" element={<SignUp/>}/>
                 </Route>
               </Routes>
             </ToolTipsProvider>
