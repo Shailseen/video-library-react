@@ -1,16 +1,27 @@
-# gaari-dekho APP
+# Garri-Dekho APP
 
+## Table of Contents
 
-> ## About
-This is a React Web App for playing video.
-### Implemented Using
+- [About](#about)
+- [Technologies used](#technologies-used)
+- [Live link](#live-link)
+- [Features](#features)
+
+## About
+This is a React Web App for playing video. Explore cars review for buying cars first get review by gaari-dekho.
+
+## Technologies used
 
 - React Js
 - Simple UI Component Library
 - React Router
-- Toastify
+- Mockbee For backend
+
+## Live Link
+ [gaari-dekho](https://gaari-dekho.netlify.app/)
 
 ### Features
+
 **Home Page**
 - List of videos.
 - Watch video by selecting any one of them.
