@@ -14,6 +14,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuIcon from '@mui/icons-material/Menu';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export {
   ThumbUpOutlinedIcon,
@@ -31,5 +32,6 @@ export {
   PersonIcon,
   PermIdentityOutlinedIcon,
   DeleteIcon,
-  MenuIcon
+  MenuIcon,
+  PlayArrowIcon
 };

@@ -98,7 +98,7 @@
 .hide_toolTip_container {
   display: none;
 }
-.video_description_container > p > small{
+.video_description_container > p > small {
   color: grey;
 }
 .flex_container {
@@ -106,4 +106,22 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.card_play_button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+}
+
+.card_play_button:hover {
+  opacity: 0.5;
+  background-color: #000000;
 }

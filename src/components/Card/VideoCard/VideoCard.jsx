@@ -7,6 +7,7 @@ import {
   WatchLaterOutlinedIcon,
   PlaylistAddOutlinedIcon,
   RemoveDoneOutlinedIcon,
+  PlayArrowIcon,
 } from "../../../utils/materialUiIcons";
 import { NavLink } from "react-router-dom";
 import { useToolTips, useVideo } from "../../../context/index";
@@ -81,6 +82,9 @@ export const VideoCard = ({ card, toolTip }) => {
         <div className={classNames(styles.timeStamp)}>
           <TimerOutlinedIcon sx={{ fontSize: 18 }} />
           <p>{timeStamp}</p>
+        </div>
+        <div className={styles.card_play_button}>
+          <PlayArrowIcon sx={{color: "var(--white-color)",fontSize: 35}}/>
         </div>
       </NavLink>
       <div className={styles.profile_detail_container}>

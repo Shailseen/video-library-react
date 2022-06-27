@@ -56,7 +56,6 @@ const AuthProvider = ({ children }) => {
       toast.success(`Signup succesfully, Welcome ${firstName}!`);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
-      console.log(response.data.createdUser);
       setUser(response.data.createdUser);
       navigate("/");
     } catch (error) {
