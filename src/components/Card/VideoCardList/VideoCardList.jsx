@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./VideoCardList.module.css";
 import { VideoCard } from "../../index";
 import { useState, useEffect } from "react";
+import { Pagination } from "../../Pagination/Pagination";
 
 export const VideoCardList = () => {
   const { videos, searchVideosList } = useVideo();
@@ -12,17 +13,21 @@ export const VideoCardList = () => {
   const [sortBy, setSortBy] = useState("Relevant");
   const [sortByVideoList, setSortByVideoList] = useState();
   const { toolTip } = useToolTips();
+  const [videosPerPage, setVideoPerPage] = useState(6);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastPost = currentPage * videosPerPage;
+  const indexOfFirstPost = indexOfLastPost - videosPerPage;
+  const currentVideos = videos?.slice(indexOfFirstPost, indexOfLastPost);
 
   const sortVideos = (videos) => {
-    videos = JSON.parse(JSON.stringify(videos))
+    videos = JSON.parse(JSON.stringify(videos));
     if (sortBy !== "Relevant") {
       videos.sort(function(a, b) {
         return new Date(b.uploadAt) - new Date(a.uploadAt);
       });
-      setSortByVideoList((prev) => videos);  
-    }
-    else 
-    setSortByVideoList((prev) => videos);
+      setSortByVideoList((prev) => videos);
+    } else setSortByVideoList((prev) => videos);
   };
 
   useEffect(() => {
@@ -33,10 +38,12 @@ export const VideoCardList = () => {
 
   const getVideosByCategories = (name) => {
     if (name === "All") {
-      setVideoListByCategory(videos);
-      setVideoList(videos);
+      setVideoListByCategory(currentVideos);
+      setVideoList(currentVideos);
     } else {
-      let temp = videos.filter((obj) => obj.categoryName === name && obj);
+      let temp = currentVideos.filter(
+        (obj) => obj.categoryName === name && obj
+      );
       setVideoList(temp);
       setVideoListByCategory(temp);
     }
@@ -44,7 +51,7 @@ export const VideoCardList = () => {
 
   useEffect(() => {
     const categories = new Set();
-    videos.map((obj) => categories.add(obj.categoryName));
+    currentVideos.map((obj) => categories.add(obj.categoryName));
     let categoriesArr = [{ cateogry: "All", style: true }];
 
     for (const element of categories) {
@@ -52,9 +59,9 @@ export const VideoCardList = () => {
     }
 
     setCategoriesData(categoriesArr);
-    setVideoList(videos);
-    setVideoListByCategory(videos);
-  }, [videos]);
+    setVideoList(currentVideos);
+    setVideoListByCategory(currentVideos);
+  }, [videos,currentPage])
 
   useEffect(() => {
     const operation = (list1, list2, isUnion = false) =>
@@ -80,6 +87,9 @@ export const VideoCardList = () => {
 
     setCategoriesData(tempArr);
   };
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <div className={styles.chips_container}>
@@ -104,13 +114,13 @@ export const VideoCardList = () => {
       <div className={styles.sort_container}>
         <button
           className={classNames("button-style-none solid-button", styles.btn)}
-          onClick={() => setSortBy(prev => "Relevant")}
+          onClick={() => setSortBy((prev) => "Relevant")}
         >
           Relevant
         </button>
         <button
           className={classNames("button-style-none solid-button", styles.btn)}
-          onClick={() => setSortBy(prev => "Latest Videos")}
+          onClick={() => setSortBy((prev) => "Latest Videos")}
         >
           Latest Videos
         </button>
@@ -118,19 +128,24 @@ export const VideoCardList = () => {
 
       {videos && videoList && (
         <p className={styles.results}>
-          Showing results {videoList.length}/{videos.length}
+          Showing results {videoList.length}/{currentVideos.length}
         </p>
       )}
       <div className={classNames(styles.cardList_container)}>
-        {sortByVideoList &&
-          sortByVideoList.map((card) => (
-            <VideoCard
-              key={card._id}
-              card={card}
-              toolTip={toolTip.find((obj) => obj.id === card._id)}
-            />
-          ))}
+        {sortByVideoList?.map((card) => (
+          <VideoCard
+            key={card._id}
+            card={card}
+            toolTip={toolTip.find((obj) => obj.id === card._id)}
+          />
+        ))}
       </div>
+      <Pagination
+        videosPerPage={videosPerPage}
+        totalvideos={videos.length}
+        paginate={paginate}
+        currentPageNumber={currentPage}
+      />
     </>
   );
 };

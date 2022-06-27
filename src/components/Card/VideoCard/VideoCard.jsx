@@ -88,6 +88,7 @@ export const VideoCard = ({ card, toolTip }) => {
           <img
             className={classNames("avatar", styles.avatar_xx_small)}
             src={creatorLogo && creatorLogo.url}
+            alt={creatorLogo.altText}
           ></img>
           <div className={styles.video_description_container}>
             <p>
