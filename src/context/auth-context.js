@@ -32,7 +32,6 @@ const AuthProvider = ({ children }) => {
       setIsApiPending(false);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
-      console.log(response.data.foundUser)
       setUser(response.data.foundUser);
       toast.success(
         `Login Successfully, Welcome ${response.data.foundUser.firstName}`
@@ -46,7 +45,6 @@ const AuthProvider = ({ children }) => {
 
   const getSignUp = async ({ firstName, lastName, email, password }) => {
     try {
-      console.log("insignup");
       setIsApiPending(true);
       const response = await axios.post("/api/auth/signup", {
         firstName: firstName,
@@ -58,7 +56,8 @@ const AuthProvider = ({ children }) => {
       toast.success(`Signup succesfully, Welcome ${firstName}!`);
       localStorage.setItem("userToken", response.data.encodedToken);
       setIsToken(response.data.encodedToken);
-      setUser(response.data.foundUser);
+      console.log(response.data.createdUser);
+      setUser(response.data.createdUser);
       navigate("/");
     } catch (error) {
       setIsApiPending(false);
